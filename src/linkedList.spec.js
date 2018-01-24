@@ -11,12 +11,22 @@ describe('A LinkedList,', () => {
 		});
 		it('should have count of zero', () => assert.equal(actual, expected));
 
-		describe('when calling GetFirst', () => {
+		describe('when calling getFirst,', () => {
 			let actual;
 			const expected = null;
 
 			before(() => {
 				actual = new LinkedList().getFirst();
+			});
+			it('should return null', () => assert.equal(actual, expected));
+		});
+
+		describe('when calling getLast,', () => {
+			let actual;
+			const expected = null;
+
+			before(() => {
+				actual = new LinkedList().getLast();
 			});
 			it('should return null', () => assert.equal(actual, expected));
 		});

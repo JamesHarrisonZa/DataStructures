@@ -6,7 +6,11 @@ class LinkedList {
 	getFirst() {
 		return null;
 	}
-	//getLast() : Node
+
+	getLast() {
+		return null;
+	}
+	
 	//addFirst(node)
 	//addLast(node)
 	//removeFirst()
