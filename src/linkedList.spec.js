@@ -109,4 +109,39 @@ describe('A LinkedList,', () => {
 			it('should return the only Node', () => assert.equal(actual, expected));
 		});
 	});
+
+	describe('with two items,', () => {
+		const linkedList = new LinkedList();
+		before(() => {
+			linkedList.addFirst(new Node(1));
+			linkedList.addLast(new Node(2));
+		});
+
+		describe('count(),', () => {
+			let actual;
+			const expected = 2;
+			before(() => {
+				actual = linkedList.count;
+			});
+			it('should have count of two', () => assert.equal(actual, expected));
+		});
+
+		describe('getFirst(),', () => {
+			let actual;
+			const expected = 1;
+			before(() => {
+				actual = linkedList.getFirst().value;
+			});
+			it('should return the first Node', () => assert.equal(actual, expected));
+		});
+
+		describe('getLast(),', () => {
+			let actual;
+			const expected = 2;
+			before(() => {
+				actual = linkedList.getLast().value;
+			});
+			it('should return the last Node', () => assert.equal(actual, expected));
+		});
+	});
 });
