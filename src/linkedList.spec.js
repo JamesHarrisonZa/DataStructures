@@ -1,4 +1,5 @@
 const LinkedList = require('./linkedList');
+const Node = require('./node');
 const assert = require('assert');
 
 describe('A LinkedList,', () => {
@@ -30,6 +31,17 @@ describe('A LinkedList,', () => {
 				actual = linkedList.getLast();
 			});
 			it('should return null', () => assert.equal(actual, expected));
+		});
+
+		describe('when calling addFirst(),', () => {
+			let actual;
+			const expected = 1;
+			before(() => {
+				const linkedList = new LinkedList();
+				linkedList.addFirst(new Node(1));
+				actual = linkedList.count;
+			});
+			it('should return a count of one', () => assert.equal(actual, expected));
 		});
 	});
 });

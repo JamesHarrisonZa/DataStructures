@@ -1,6 +1,8 @@
 class LinkedList { 
-	constructor(){
+	constructor() {
 		this.count = 0;
+		this._head = null;
+		this._tail = null;
 	}
 
 	getFirst() {
@@ -10,8 +12,12 @@ class LinkedList {
 	getLast() {
 		return null;
 	}
-	
-	//addFirst(node)
+
+	addFirst(node) {
+		this._head = node;
+		this.count ++;
+	}
+
 	//addLast(node)
 	//removeFirst()
 	//removeLast()
