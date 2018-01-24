@@ -33,7 +33,7 @@ describe('A LinkedList,', () => {
 			it('should return null', () => assert.equal(actual, expected));
 		});
 
-		describe('when calling addFirst(),', () => {
+		describe('when calling addFirst(node),', () => {
 			let actual;
 			const expected = 1;
 			before(() => {
@@ -44,7 +44,7 @@ describe('A LinkedList,', () => {
 			it('should return a count of one', () => assert.equal(actual, expected));
 		});
 
-		describe('when calling addLast(),', () => {
+		describe('when calling addLast(node),', () => {
 			let actual;
 			const expected = 1;
 			before(() => {
@@ -53,6 +53,26 @@ describe('A LinkedList,', () => {
 				actual = linkedList.count;
 			});
 			it('should return a count of one', () => assert.equal(actual, expected));
+		});
+
+		describe('when calling removeFirst(),', () => {
+			let actual;
+			const expected = 0;
+			before(() => {
+				linkedList.removeFirst();
+				actual = linkedList.count;
+			});
+			it('calling count should return zero', () => assert.equal(actual, expected));
+		});
+
+		describe('when calling removeLast(),', () => {
+			let actual;
+			const expected = 0;
+			before(() => {
+				linkedList.removeLast();
+				actual = linkedList.count;
+			});
+			it('calling count should return zero', () => assert.equal(actual, expected));
 		});
 	});
 });

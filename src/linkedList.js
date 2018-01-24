@@ -23,8 +23,13 @@ class LinkedList {
 		this.count++;
 	}
 
-	//removeFirst()
-	//removeLast()
+	removeFirst() {
+		if (this.count !== 0) this.count--;
+	}
+	
+	removeLast() {
+		if (this.count !== 0) this.count--;
+	}
 }
 
 module.exports = LinkedList;
