@@ -1,0 +1,11 @@
+{
+	"mocha.files.glob": "src/**/*spec.js",
+	"mocha.runTestsOnSave": "true",
+	"mocha.options": {
+		"checkLeaks": true,
+		"throwDeprecation": true,
+		"traceDeprecation": true,
+		"traceWarnings": true,
+		"allowUncaught": true
+	}
+}
