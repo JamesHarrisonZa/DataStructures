@@ -97,7 +97,16 @@ describe('A LinkedList,', () => {
 			before(() => {
 				actual = linkedList.getFirst().value;
 			});
-			it('should return the first Node', () => assert.equal(actual, expected));
+			it('should return the only Node', () => assert.equal(actual, expected));
+		});
+
+		describe('getLast(),', () => {
+			let actual;
+			const expected = 1;
+			before(() => {
+				actual = linkedList.getLast().value;
+			});
+			it('should return the only Node', () => assert.equal(actual, expected));
 		});
 	});
 });

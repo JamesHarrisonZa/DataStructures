@@ -10,17 +10,18 @@ class LinkedList {
 	}
 
 	getLast() {
-		return null;
+		return (this._tail !== null) ? this._tail : null;
 	}
 
 	addFirst(node) {
 		this._head = node;
+		if (this.count === 0) this._tail = node;
 		this.count++;
 	}
 
 	addLast(node) {
-		this._tail = node;
 		this.count++;
+		this._tail = node;
 	}
 
 	removeFirst() {
