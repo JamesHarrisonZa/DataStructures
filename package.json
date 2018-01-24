@@ -1,0 +1,19 @@
+{
+	"name": "datastructures",
+	"version": "1.0.0",
+	"description": "",
+	"main": "",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/JamesHarrisonZa/DataStructures.git"
+	},
+	"author": "James Harrison",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/JamesHarrisonZa/DataStructures/issues"
+	},
+	"homepage": "https://github.com/JamesHarrisonZa/DataStructures#readme"
+}
