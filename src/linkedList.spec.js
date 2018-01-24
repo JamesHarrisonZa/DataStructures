@@ -43,5 +43,16 @@ describe('A LinkedList,', () => {
 			});
 			it('should return a count of one', () => assert.equal(actual, expected));
 		});
+
+		describe('when calling addLast(),', () => {
+			let actual;
+			const expected = 1;
+			before(() => {
+				const linkedList = new LinkedList();
+				linkedList.addLast(new Node(1));
+				actual = linkedList.count;
+			});
+			it('should return a count of one', () => assert.equal(actual, expected));
+		});
 	});
 });

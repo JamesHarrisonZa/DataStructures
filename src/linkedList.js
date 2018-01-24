@@ -18,7 +18,11 @@ class LinkedList {
 		this.count ++;
 	}
 
-	//addLast(node)
+	addLast(node) {
+		this._tail = node;
+		this.count++;
+	}
+
 	//removeFirst()
 	//removeLast()
 }
