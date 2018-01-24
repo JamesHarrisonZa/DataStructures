@@ -20,8 +20,9 @@ class LinkedList {
 	}
 
 	addLast(node) {
-		this.count++;
 		this._tail = node;
+		if (this.count === 0) this._head = node;
+		this.count++;
 	}
 
 	removeFirst() {
