@@ -3,13 +3,14 @@ const assert = require('assert');
 
 describe('A LinkedList,', () => {
 
-	const expected = 42;
-	let actual;
+	describe('with no items,', () => { 
+		let actual;
+		const expected = 0;
 
-	before(() => {
-		const linkedList = new LinkedList();
-		actual = linkedList.length;
+		before(() => {
+			actual = new LinkedList().count;
+		});
+
+		it('should have count of zero', () => assert.equal(actual, expected));
 	});
-
-	it('should have length 42', () => assert.equal(actual, expected));
 });

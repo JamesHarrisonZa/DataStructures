@@ -1,6 +1,6 @@
 class LinkedList { 
 	constructor(){
-		this.length = 42;
+		this.count = 0;
 	}
 }
 
