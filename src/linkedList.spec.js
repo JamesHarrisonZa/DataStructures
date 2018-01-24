@@ -91,13 +91,13 @@ describe('A LinkedList,', () => {
 			it('should have count of one', () => assert.equal(actual, expected));
 		});
 
-		// describe('getFirst(),', () => {
-		// 	let actual;
-		// 	const expected = 1;
-		// 	before(() => {
-		// 		actual = linkedList.getFirst().value;
-		// 	});
-		// 	it('should return first Node', () => assert.equal(actual, expected));
-		// });
+		describe('getFirst(),', () => {
+			let actual;
+			const expected = 1;
+			before(() => {
+				actual = linkedList.getFirst().value;
+			});
+			it('should return the first Node', () => assert.equal(actual, expected));
+		});
 	});
 });

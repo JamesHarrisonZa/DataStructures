@@ -1,4 +1,4 @@
-class LinkedList { 
+class LinkedList {
 	constructor() {
 		this.count = 0;
 		this._head = null;
@@ -6,7 +6,7 @@ class LinkedList {
 	}
 
 	getFirst() {
-		return null;
+		return (this._head !== null) ? this._head : null;
 	}
 
 	getLast() {
@@ -15,7 +15,7 @@ class LinkedList {
 
 	addFirst(node) {
 		this._head = node;
-		this.count ++;
+		this.count++;
 	}
 
 	addLast(node) {
@@ -26,7 +26,7 @@ class LinkedList {
 	removeFirst() {
 		if (this.count !== 0) this.count--;
 	}
-	
+
 	removeLast() {
 		if (this.count !== 0) this.count--;
 	}
