@@ -75,4 +75,29 @@ describe('A LinkedList,', () => {
 			it('should return a count of zero', () => assert.equal(actual, expected));
 		});
 	});
+
+	describe('with one item,', () => {
+		const linkedList = new LinkedList();
+		before(() => {
+			linkedList.addFirst(new Node(1));
+		});
+
+		describe('count(),', () => {
+			let actual;
+			const expected = 1;
+			before(() => {
+				actual = linkedList.count;
+			});
+			it('should have count of one', () => assert.equal(actual, expected));
+		});
+
+		// describe('getFirst(),', () => {
+		// 	let actual;
+		// 	const expected = 1;
+		// 	before(() => {
+		// 		actual = linkedList.getFirst().value;
+		// 	});
+		// 	it('should return first Node', () => assert.equal(actual, expected));
+		// });
+	});
 });
