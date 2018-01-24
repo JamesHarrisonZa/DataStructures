@@ -6,7 +6,7 @@ describe('A LinkedList,', () => {
 	describe('with no items,', () => { 
 		const linkedList = new LinkedList();
 		
-		describe('when calling count(),', () => {
+		describe('count(),', () => {
 			let actual;
 			const expected = 0;
 			before(() => {
@@ -15,7 +15,7 @@ describe('A LinkedList,', () => {
 			it('should have count of zero', () => assert.equal(actual, expected));
 		});
 
-		describe('when calling getFirst(),', () => {
+		describe('getFirst(),', () => {
 			let actual;
 			const expected = null;
 			before(() => {
@@ -24,7 +24,7 @@ describe('A LinkedList,', () => {
 			it('should return null', () => assert.equal(actual, expected));
 		});
 
-		describe('when calling getLast(),', () => {
+		describe('getLast(),', () => {
 			let actual;
 			const expected = null;
 			before(() => {
@@ -33,7 +33,7 @@ describe('A LinkedList,', () => {
 			it('should return null', () => assert.equal(actual, expected));
 		});
 
-		describe('when calling addFirst(node),', () => {
+		describe('addFirst(node),', () => {
 			let actual;
 			const expected = 1;
 			before(() => {
@@ -44,7 +44,7 @@ describe('A LinkedList,', () => {
 			it('should return a count of one', () => assert.equal(actual, expected));
 		});
 
-		describe('when calling addLast(node),', () => {
+		describe('addLast(node),', () => {
 			let actual;
 			const expected = 1;
 			before(() => {
@@ -55,24 +55,24 @@ describe('A LinkedList,', () => {
 			it('should return a count of one', () => assert.equal(actual, expected));
 		});
 
-		describe('when calling removeFirst(),', () => {
+		describe('removeFirst(),', () => {
 			let actual;
 			const expected = 0;
 			before(() => {
 				linkedList.removeFirst();
 				actual = linkedList.count;
 			});
-			it('calling count should return zero', () => assert.equal(actual, expected));
+			it('should return a count of zero', () => assert.equal(actual, expected));
 		});
 
-		describe('when calling removeLast(),', () => {
+		describe('removeLast(),', () => {
 			let actual;
 			const expected = 0;
 			before(() => {
 				linkedList.removeLast();
 				actual = linkedList.count;
 			});
-			it('calling count should return zero', () => assert.equal(actual, expected));
+			it('should return a count of zero', () => assert.equal(actual, expected));
 		});
 	});
 });
