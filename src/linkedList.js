@@ -3,12 +3,14 @@ class LinkedList {
 		this.count = 0;
 	}
 
-	//GetFirst() : Node
-	//GetLast() : Node
-	//AddFirst(node)
-	//AddLast(node)
-	//RemoveFirst()
-	//RemoveLast()
+	getFirst() {
+		return null;
+	}
+	//getLast() : Node
+	//addFirst(node)
+	//addLast(node)
+	//removeFirst()
+	//removeLast()
 }
 
 module.exports = LinkedList;
