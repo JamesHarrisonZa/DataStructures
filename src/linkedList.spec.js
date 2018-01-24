@@ -3,30 +3,31 @@ const assert = require('assert');
 
 describe('A LinkedList,', () => {
 	describe('with no items,', () => { 
-		let actual;
-		const expected = 0;
-
-		before(() => {
-			actual = new LinkedList().count;
+		const linkedList = new LinkedList();
+		
+		describe('when calling count(),', () => {
+			let actual;
+			const expected = 0;
+			before(() => {
+				actual = linkedList.count;
+			});
+			it('should have count of zero', () => assert.equal(actual, expected));
 		});
-		it('should have count of zero', () => assert.equal(actual, expected));
 
-		describe('when calling getFirst,', () => {
+		describe('when calling getFirst(),', () => {
 			let actual;
 			const expected = null;
-
 			before(() => {
-				actual = new LinkedList().getFirst();
+				actual = linkedList.getFirst();
 			});
 			it('should return null', () => assert.equal(actual, expected));
 		});
 
-		describe('when calling getLast,', () => {
+		describe('when calling getLast(),', () => {
 			let actual;
 			const expected = null;
-
 			before(() => {
-				actual = new LinkedList().getLast();
+				actual = linkedList.getLast();
 			});
 			it('should return null', () => assert.equal(actual, expected));
 		});
