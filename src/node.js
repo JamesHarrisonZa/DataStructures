@@ -3,8 +3,8 @@ class Node {
 		this.value = value;
 	}
 
-	//GetNext() :Node
-	//GetPrevious() :Node
+	//getNext() :Node
+	//getPrevious() :Node
 }
 
 module.exports = Node;

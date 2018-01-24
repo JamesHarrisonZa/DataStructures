@@ -2,9 +2,7 @@ const Node = require('./node');
 const assert = require('assert');
 
 describe('A Node,', () => {
-
 	describe('set with a given value,', () => {
-
 		let actual;
 		const expected = 42;
 
