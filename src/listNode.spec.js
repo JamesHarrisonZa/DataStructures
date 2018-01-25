@@ -1,7 +1,7 @@
 const ListNode = require('./listNode');
 const assert = require('assert');
 
-describe('A Node,', () => {
+describe('A ListNode,', () => {
 	describe('set with a given value,', () => {
 		const actual = new ListNode(42).value;
 		const expected = 42;
