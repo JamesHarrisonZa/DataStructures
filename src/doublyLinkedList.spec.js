@@ -1,12 +1,12 @@
 'use strict'
 
-const LinkedList = require('./linkedList');
+const DoublyLinkedList = require('./doublyLinkedList');
 const Node = require('./node');
 const assert = require('assert');
 
-describe('A LinkedList,', () => {
+describe('A DoublyLinkedList,', () => {
 	describe('with no items,', () => { 
-		const linkedList = new LinkedList();
+		const linkedList = new DoublyLinkedList();
 		
 		describe('count(),', () => {
 			const actual = linkedList.count;
@@ -27,7 +27,7 @@ describe('A LinkedList,', () => {
 		});
 
 		describe('addFirst(node),', () => {
-			const linkedList = new LinkedList();
+			const linkedList = new DoublyLinkedList();
 			linkedList.addFirst(new Node(1));
 			const actual = linkedList.count;
 			const expected = 1;
@@ -35,7 +35,7 @@ describe('A LinkedList,', () => {
 		});
 
 		describe('addLast(node),', () => {
-			const linkedList = new LinkedList();
+			const linkedList = new DoublyLinkedList();
 			linkedList.addLast(new Node(1));
 			const actual = linkedList.count;
 			const expected = 1;
@@ -58,7 +58,7 @@ describe('A LinkedList,', () => {
 	});
 
 	describe('with one item,', () => {
-		const linkedList = new LinkedList();
+		const linkedList = new DoublyLinkedList();
 		linkedList.addFirst(new Node(1));
 
 		describe('count(),', () => {
@@ -81,7 +81,7 @@ describe('A LinkedList,', () => {
 	});
 
 	describe('with two items,', () => {
-		const linkedList = new LinkedList();
+		const linkedList = new DoublyLinkedList();
 		linkedList.addFirst(new Node(1));
 		linkedList.addLast(new Node(2));
 

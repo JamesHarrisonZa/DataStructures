@@ -1,8 +1,8 @@
-class Node {
+class ListNode {
 	/**
 	 * @param {any} value 
-	 * @param {Node} next 
-	 * @param {Node} previous
+	 * @param {ListNode} next 
+	 * @param {ListNode} previous
 	 */
 	constructor(value, next, previous) {
 		this.value = value;
@@ -11,4 +11,4 @@ class Node {
 	}
 }
 
-module.exports = Node;
+module.exports = ListNode;

@@ -1,4 +1,4 @@
-class LinkedList {
+class DoublyLinkedList {
 	constructor() {
 		this.count = 0;
 		this._head = null;
@@ -34,4 +34,4 @@ class LinkedList {
 	}
 }
 
-module.exports = LinkedList;
+module.exports = DoublyLinkedList;
