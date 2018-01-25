@@ -1,7 +1,7 @@
 'use strict'
 
 const DoublyLinkedList = require('./doublyLinkedList');
-const Node = require('./node');
+const ListNode = require('./listNode');
 const assert = require('assert');
 
 describe('A DoublyLinkedList,', () => {
@@ -28,7 +28,7 @@ describe('A DoublyLinkedList,', () => {
 
 		describe('addFirst(node),', () => {
 			const linkedList = new DoublyLinkedList();
-			linkedList.addFirst(new Node(1));
+			linkedList.addFirst(new ListNode(1));
 			const actual = linkedList.count;
 			const expected = 1;
 			it('should return a count of one', () => assert.equal(actual, expected));
@@ -36,7 +36,7 @@ describe('A DoublyLinkedList,', () => {
 
 		describe('addLast(node),', () => {
 			const linkedList = new DoublyLinkedList();
-			linkedList.addLast(new Node(1));
+			linkedList.addLast(new ListNode(1));
 			const actual = linkedList.count;
 			const expected = 1;
 			it('should return a count of one', () => assert.equal(actual, expected));
@@ -57,38 +57,16 @@ describe('A DoublyLinkedList,', () => {
 		});
 	});
 
-	describe('with one item,', () => {
+	describe('with multiple items,', () => {
 		const linkedList = new DoublyLinkedList();
-		linkedList.addFirst(new Node(1));
-
-		describe('count(),', () => {
-			const actual = linkedList.count;
-			const expected = 1;
-			it('should have count of one', () => assert.equal(actual, expected));
-		});
-
-		describe('getFirst(),', () => {
-			const actual = linkedList.getFirst().value;
-			const expected = 1;
-			it('should return the only Node', () => assert.equal(actual, expected));
-		});
-
-		describe('getLast(),', () => {
-			const actual = linkedList.getLast().value;
-			const expected = 1;
-			it('should return the only Node', () => assert.equal(actual, expected));
-		});
-	});
-
-	describe('with two items,', () => {
-		const linkedList = new DoublyLinkedList();
-		linkedList.addFirst(new Node(1));
-		linkedList.addLast(new Node(2));
+		linkedList.addFirst(new ListNode(3));
+		linkedList.addFirst(new ListNode(2));
+		linkedList.addFirst(new ListNode(1));
 
 		describe('count(),', () => {
 			let actual = linkedList.count;
-			const expected = 2;
-			it('should have count of two', () => assert.equal(actual, expected));
+			const expected = 3;
+			it('should have count of three', () => assert.equal(actual, expected));
 		});
 
 		describe('getFirst(),', () => {
@@ -99,7 +77,7 @@ describe('A DoublyLinkedList,', () => {
 
 		describe('getLast(),', () => {
 			let actual = linkedList.getLast().value;
-			const expected = 2;
+			const expected = 3;
 			it('should return the last Node', () => assert.equal(actual, expected));
 		});
 	});
