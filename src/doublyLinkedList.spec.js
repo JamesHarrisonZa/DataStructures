@@ -109,7 +109,7 @@ describe('A DoublyLinkedList,', () => {
 				it('should be null', () => assert.equal(actual, expected));
 			});
 
-			xdescribe('.previous,', () => {
+			describe('.previous,', () => {
 				const actual = lastNode.previous;
 				const expected = actualSecondNode;
 				it('should return the second Node', () => assert.equal(actual, expected));
