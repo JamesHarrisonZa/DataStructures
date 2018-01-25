@@ -14,15 +14,21 @@ class DoublyLinkedList {
 	}
 
 	addFirst(node) {
-		this._head = node;
-		if (this.count === 0) this._tail = node;
 		this.count++;
+		if (this.count === 1) this._tail = node;
+
+		if (this._head !== null) {
+			this._head.previous = node;
+			node.next = this._head;
+		}
+		this._head = node;
 	}
 
 	addLast(node) {
-		this._tail = node;
-		if (this.count === 0) this._head = node;
 		this.count++;
+		if (this.count === 1) this._head = node;
+		
+		this._tail = node;
 	}
 
 	removeFirst() {
