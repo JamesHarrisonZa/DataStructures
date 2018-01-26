@@ -1,7 +1,7 @@
 # DataStructures
 
 Currently very WIP  
-My JavaScript implementation for the following datastructures. To improve my understanding of these fundementals.
+My JavaScript implementation of various data structures. To reinforce my understanding of these fundamentals.  
 
 * LinkedList
 * BinaryTree
