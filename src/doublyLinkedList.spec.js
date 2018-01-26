@@ -158,7 +158,7 @@ describe('A DoublyLinkedList,', () => {
 			});
 		});
 
-		describe('removeFirst()', () => {
+		describe('removeFirst(),', () => {
 			linkedList.removeFirst();
 
 			describe('count,', () => {
@@ -167,7 +167,7 @@ describe('A DoublyLinkedList,', () => {
 				it('should be one less', () => assert.equal(actual, expected));
 			});
 
-			xdescribe('getFirst(),', () => {
+			describe('getFirst(),', () => {
 				const actual = linkedList.getFirst();
 				const expected = nodeB;
 				it('should return the new head node', () => assert.equal(actual, expected));
