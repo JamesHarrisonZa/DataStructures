@@ -5,7 +5,7 @@ const ListNode = require('./listNode');
 const assert = require('assert');
 
 describe('A DoublyLinkedList,', () => {
-	
+
 	describe('with no items,', () => {
 
 		describe('.count,', () => {
@@ -219,6 +219,14 @@ describe('A DoublyLinkedList,', () => {
 					const expected = nodeB;
 					assert.equal(actual, expected);
 				});
+
+				describe('.previous,', () => {
+					it('should be null', () => {
+						const actual = new DoublyLinkedList(nodeA, nodeB, nodeC).removeLast().getFirst().previous;
+						const expected = null;
+						assert.equal(actual, expected);
+					});
+				});
 			});
 		});
 
@@ -237,6 +245,14 @@ describe('A DoublyLinkedList,', () => {
 					const actual = new DoublyLinkedList(nodeA, nodeB, nodeC).removeLast().getLast();
 					const expected = nodeB;
 					assert.equal(actual, expected);
+				});
+
+				describe('.next,', () => {
+					it('should be null', () => {
+						const actual = new DoublyLinkedList(nodeA, nodeB, nodeC).removeLast().getLast().next;
+						const expected = null;
+						assert.equal(actual, expected);
+					});
 				});
 			});
 		});
