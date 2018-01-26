@@ -28,6 +28,10 @@ class DoublyLinkedList {
 		this.count++;
 		if (this.count === 1) this._head = node;
 		
+		if (this._tail !== null) {
+			this._tail.next = node;
+			node.previous = this._head;
+		}
 		this._tail = node;
 	}
 

@@ -55,12 +55,33 @@ describe('A DoublyLinkedList,', () => {
 			});
 		});
 
-		describe('addLast(node),', () => {
+		describe('addLast(nodeA),', () => {
 			const linkedList = new DoublyLinkedList();
-			linkedList.addLast(new ListNode(1));
-			const actual = linkedList.count;
-			const expected = 1;
-			it('should return a count of one', () => assert.equal(actual, expected));
+			const nodeA = new ListNode(1);
+			linkedList.addLast(nodeA);
+			
+			describe('count(),', () => {
+				const actual = linkedList.count;
+				const expected = 1;
+				it('should return a count of one', () => assert.equal(actual, expected));
+			});
+
+			describe('addLast(nodeB),', () => {
+				const nodeB = new ListNode(2);
+				linkedList.addLast(nodeB);
+
+				describe('nodeA.next,', () => {
+					const actual = nodeA.next;
+					const expected = nodeB;
+					it('should be nodeB', () => assert.equal(actual, expected));
+				});
+
+				describe('nodeB.previous,', () => {
+					const actual = nodeB.previous;
+					const expected = nodeA;
+					it('should be nodeA', () => assert.equal(actual, expected));
+				});
+			});
 		});
 
 		describe('removeFirst(),', () => {
