@@ -30,7 +30,7 @@ class DoublyLinkedList {
 		
 		if (this._tail !== null) {
 			this._tail.next = node;
-			node.previous = this._head;
+			node.previous = this._tail;
 		}
 		this._tail = node;
 	}
