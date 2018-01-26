@@ -256,5 +256,19 @@ describe('A DoublyLinkedList,', () => {
 				});
 			});
 		});
+
+		describe('iterating over the list,', () => {
+
+			it('should loop for every node', () => {
+				const linkedList = new DoublyLinkedList(nodeA, nodeB, nodeC);
+				let loopCount = 0;
+				for (const node of linkedList) {
+					loopCount ++;
+				}
+				const actual = loopCount;
+				const expected = linkedList.count;
+				assert.equal(actual, expected);
+			});
+		});
 	});
 });

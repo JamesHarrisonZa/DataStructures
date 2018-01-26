@@ -9,6 +9,18 @@ class DoublyLinkedList {
 		}
 	}
 
+	[Symbol.iterator](){
+		let currentNode;
+		let headNode = this._head;
+		return {
+			next() {
+				currentNode = (currentNode === undefined) ? headNode : currentNode.next;
+				let done = !currentNode;
+				return { currentNode, done };
+			}
+		}
+	}
+
 	getFirst() {
 		return (this._head !== null) ? this._head : null;
 	}
