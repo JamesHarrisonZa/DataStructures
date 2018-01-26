@@ -5,172 +5,219 @@ const ListNode = require('./listNode');
 const assert = require('assert');
 
 describe('A DoublyLinkedList,', () => {
-	describe('with no items,', () => { 
-		const linkedList = new DoublyLinkedList();
-		
+	describe('with no items,', () => {
+
 		describe('.count,', () => {
-			const actual = linkedList.count;
-			const expected = 0;
-			it('should have count of zero', () => assert.equal(actual, expected));
+
+			it('should have count of zero', () => {
+				const actual = new DoublyLinkedList().count;
+				const expected = 0;
+				assert.equal(actual, expected);
+			});
 		});
 
 		describe('getFirst(),', () => {
-			const actual = linkedList.getFirst();
-			const expected = null;
-			it('should return null', () => assert.equal(actual, expected));
+			it('should return null', () => {
+				const actual = new DoublyLinkedList().getFirst();
+				const expected = null;
+				assert.equal(actual, expected);
+			});
 		});
 
 		describe('getLast(),', () => {
-			const actual = linkedList.getLast();
-			const expected = null;
-			it('should return null', () => assert.equal(actual, expected));
+			it('should return null', () => {
+				const actual = new DoublyLinkedList().getLast();
+				const expected = null;
+				assert.equal(actual, expected);
+			});
 		});
 
 		describe('addFirst(nodeA),', () => {
-			const linkedList = new DoublyLinkedList();
-			const nodeA = new ListNode(1);
-			linkedList.addFirst(nodeA);
+			const nodeA = new ListNode('A');
 
 			describe('.count,', () => {
-				const actual = linkedList.count;
-				const expected = 1;
-				it('should return a count of one', () => assert.equal(actual, expected));
+				it('should return a count of one', () => {
+					const actual = new DoublyLinkedList().addFirst(nodeA).count;
+					const expected = 1;
+					assert.equal(actual, expected);
+				});
+			});
+
+			describe('getFirst(),', () => {
+				describe('.value,', () => {
+					it('should return nodeA\'s value', () => {
+						const actual = new DoublyLinkedList().addFirst(nodeA).getFirst().value;
+						const expected = nodeA.value;
+						assert.equal(actual, expected);
+					});
+				});
 			});
 
 			describe('addFirst(nodeB),', () => {
-				const nodeB = new ListNode(2);
-				linkedList.addFirst(nodeB);
+				const nodeB = new ListNode('B');
 
 				describe('nodeB.next,', () => {
-					const actual = nodeB.next;
-					const expected = nodeA;
-					it('should be nodeA', () => assert.equal(actual, expected));
+					it('should be nodeA', () => {
+						const linkedList = new DoublyLinkedList().addFirst(nodeA).addFirst(nodeB);
+						const actual = nodeB.next;
+						const expected = nodeA;
+						assert.equal(actual, expected)
+					});
 				});
 
 				describe('nodeA.previous,', () => {
-					const actual = nodeA.previous;
-					const expected = nodeB;
-					it('should be nodeB', () => assert.equal(actual, expected));
+					it('should be nodeB', () => {
+						const linkedList = new DoublyLinkedList().addFirst(nodeA).addFirst(nodeB);
+						const actual = nodeA.previous;
+						const expected = nodeB;
+						assert.equal(actual, expected)
+					});
 				});
 			});
 		});
 
 		describe('addLast(nodeA),', () => {
-			const linkedList = new DoublyLinkedList();
-			const nodeA = new ListNode(1);
-			linkedList.addLast(nodeA);
-			
+			const nodeA = new ListNode('A');
+
 			describe('.count,', () => {
-				const actual = linkedList.count;
-				const expected = 1;
-				it('should return a count of one', () => assert.equal(actual, expected));
+				it('should return a count of one', () => {
+					const actual = new DoublyLinkedList().addLast(nodeA).count;
+					const expected = 1;
+					assert.equal(actual, expected);
+				});
 			});
 
 			describe('addLast(nodeB),', () => {
-				const nodeB = new ListNode(2);
-				linkedList.addLast(nodeB);
+				const nodeB = new ListNode('B');
 
 				describe('nodeA.next,', () => {
-					const actual = nodeA.next;
-					const expected = nodeB;
-					it('should be nodeB', () => assert.equal(actual, expected));
+					it('should be nodeB', () => {
+						const linkedList = new DoublyLinkedList().addLast(nodeA).addLast(nodeB);
+						const actual = nodeA.next;
+						const expected = nodeB;
+						assert.equal(actual, expected);
+					});
 				});
 
 				describe('nodeB.previous,', () => {
-					const actual = nodeB.previous;
-					const expected = nodeA;
-					it('should be nodeA', () => assert.equal(actual, expected));
+					it('should be nodeA', () => {
+						const linkedList = new DoublyLinkedList().addLast(nodeA).addLast(nodeB);
+						const actual = nodeB.previous;
+						const expected = nodeA;
+						assert.equal(actual, expected);
+					});
 				});
 			});
 		});
 
 		describe('removeFirst(),', () => {
-			linkedList.removeFirst();
-			const actual = linkedList.count;
-			const expected = 0;
-			it('should return a count of zero', () => assert.equal(actual, expected));
+
+			it('should return a count of zero', () => {
+				const actual = new DoublyLinkedList().removeFirst().count;
+				const expected = 0;
+				assert.equal(actual, expected);
+			});
 		});
 
 		describe('removeLast(),', () => {
-			linkedList.removeLast();
-			const actual = linkedList.count;
-			const expected = 0;
-			it('should return a count of zero', () => assert.equal(actual, expected));
+			it('should return a count of zero', () => {
+				const actual = new DoublyLinkedList().removeLast().count;
+				const expected = 0;
+				assert.equal(actual, expected);
+			});
 		});
 	});
 
 	describe('with multiple items,', () => {
-		const linkedList = new DoublyLinkedList();
-		const nodeA = new ListNode('A');
-		const nodeB = new ListNode('B');
-		const nodeC = new ListNode('C');
-		linkedList.addLast(nodeA);
-		linkedList.addLast(nodeB);
-		linkedList.addLast(nodeC);
+
+		let nodeA;
+		let nodeB;
+		let nodeC;
+
+		beforeEach(() => {
+			nodeA = new ListNode('A');
+			nodeB = new ListNode('B');
+			nodeC = new ListNode('C');
+		});
 
 		describe('.count,', () => {
-			const actual = linkedList.count;
-			const expected = 3;
-			it('should have count of three', () => assert.equal(actual, expected));
+			it('should have count of three', () => {
+				const actual = new DoublyLinkedList(nodeA, nodeB, nodeC).count;
+				const expected = 3;
+				assert.equal(actual, expected);
+			});
 		});
 
 		describe('getFirst(),', () => {
-			const firstNode = linkedList.getFirst();
 
-			describe('.value,', ()=> {
-				const actual = firstNode.value;
-				const expected = 'A';
-				it('should return the first Node\'s value', () => assert.equal(actual, expected));
+			describe('.value,', () => {
+				it('should return the first Node\'s value', () => {
+					const actual = new DoublyLinkedList(nodeA, nodeB, nodeC).getFirst().value;
+					const expected = 'A';
+					assert.equal(actual, expected);
+				});
 			});
 
 			describe('.next,', () => {
-				const actual = firstNode.next;
-				const expected = nodeB;
-				it('should return the second Node', () => assert.equal(actual, expected));
+				it('should return the second Node', () => {
+					const actual = new DoublyLinkedList(nodeA, nodeB, nodeC).getFirst().next;
+					const expected = nodeB;
+					assert.equal(actual, expected);
+				});
 			});
 
 			describe('.previous,', () => {
-				const actual = firstNode.previous;
-				const expected = null;
-				it('should be null', () => assert.equal(actual, expected));
+				it('should be null', () => {
+					const actual = new DoublyLinkedList(nodeA, nodeB, nodeC).getFirst().previous;
+					const expected = null;
+					assert.equal(actual, expected);
+				});
 			});
 		});
 
 		describe('getLast(),', () => {
-			const lastNode = linkedList.getLast();
 
 			describe('.value,', () => {
-				const actual = lastNode.value;
-				const expected = 'C';
-				it('should return the last Node\'s value', () => assert.equal(actual, expected));
+				it('should return the last Node\'s value', () => {
+					const actual = new DoublyLinkedList(nodeA, nodeB, nodeC).getLast().value;
+					const expected = 'C';
+					assert.equal(actual, expected);
+				});
 			});
 
 			describe('.next,', () => {
-				const actual = lastNode.next;
-				const expected = null;
-				it('should be null', () => assert.equal(actual, expected));
+				it('should be null', () => {
+					const actual = new DoublyLinkedList(nodeA, nodeB, nodeC).getLast().next;
+					const expected = null;
+					assert.equal(actual, expected);
+				});
 			});
 
 			describe('.previous,', () => {
-				const actual = lastNode.previous;
-				const expected = nodeB;
-				it('should return the second Node', () => assert.equal(actual, expected));
+				it('should return the second Node', () => {
+					const actual = new DoublyLinkedList(nodeA, nodeB, nodeC).getLast().previous;
+					const expected = nodeB;
+					assert.equal(actual, expected);
+				});
 			});
 		});
 
 		describe('removeFirst(),', () => {
-			linkedList.removeFirst();
 
 			describe('count,', () => {
-				const actual = linkedList.count;
-				const expected = 2;
-				it('should be one less', () => assert.equal(actual, expected));
+				it('should be one less', () => {
+					const actual = new DoublyLinkedList(nodeA, nodeB, nodeC).removeFirst().count;
+					const expected = 2;
+					assert.equal(actual, expected);
+				});
 			});
 
 			describe('getFirst(),', () => {
-				const actual = linkedList.getFirst();
-				const expected = nodeB;
-				it('should return the new head node', () => assert.equal(actual, expected));
+				it('should return the new head node', () => {
+					const actual = new DoublyLinkedList(nodeA, nodeB, nodeC).removeFirst().getFirst();
+					const expected = nodeB;
+					assert.equal(actual, expected);
+				});
 			});
 		});
 	});

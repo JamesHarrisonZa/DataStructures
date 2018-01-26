@@ -1,8 +1,12 @@
 class DoublyLinkedList {
-	constructor() {
+	constructor(...nodes) {
 		this.count = 0;
 		this._head = null;
 		this._tail = null;
+
+		for (const node of nodes) {
+			this.addLast(node);
+		}
 	}
 
 	getFirst() {
@@ -22,6 +26,7 @@ class DoublyLinkedList {
 			node.next = this._head;
 		}
 		this._head = node;
+		return this;
 	}
 
 	addLast(node) {
@@ -33,18 +38,21 @@ class DoublyLinkedList {
 			node.previous = this._tail;
 		}
 		this._tail = node;
+		return this;
 	}
 
 	removeFirst() {
 		if (this.count !== 0) this.count--;
-		if (!this._head) return;
-
-		this._head = this._head.next;
-		this._head.previous = null;
+		if (this._head){
+			this._head = this._head.next;
+			this._head.previous = null;
+		}
+		return this;
 	}
 
 	removeLast() {
 		if (this.count !== 0) this.count--;
+		return this;
 	}
 }
 
