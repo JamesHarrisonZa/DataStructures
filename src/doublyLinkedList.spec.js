@@ -259,15 +259,26 @@ describe('A DoublyLinkedList,', () => {
 
 		describe('iterating over the list,', () => {
 
-			it('should loop for every node', () => {
-				const linkedList = new DoublyLinkedList(nodeA, nodeB, nodeC);
-				let loopCount = 0;
-				for (const node of linkedList) {
-					loopCount ++;
-				}
-				const actual = loopCount;
-				const expected = linkedList.count;
-				assert.equal(actual, expected);
+			describe('for of', () => {
+				it('should loop for every node', () => {
+					const linkedList = new DoublyLinkedList(nodeA, nodeB, nodeC);
+					let loopCount = 0;
+					for (const node of linkedList) {
+						loopCount++;
+					}
+					const actual = loopCount;
+					const expected = linkedList.count;
+					assert.equal(actual, expected);
+				});
+			});
+			
+			describe('destructuring', () => {
+				it('should create an array of the same length', () => {
+					const linkedList = new DoublyLinkedList(nodeA, nodeB, nodeC);
+					const actual = [...linkedList].length;
+					const expected = linkedList.count;
+					assert.equal(actual, expected);
+				});
 			});
 		});
 	});
