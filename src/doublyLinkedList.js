@@ -13,10 +13,10 @@ class DoublyLinkedList {
 
 	[Symbol.iterator](){
 		let currentNode;
-		let headNode = this._head;
+		let head = this._head;
 		return {
 			next() {
-				currentNode = (currentNode === undefined) ? headNode : currentNode.next;
+				currentNode = (currentNode === undefined) ? head : currentNode.next;
 				let done = !currentNode;
 				return { currentNode, done };
 			}
