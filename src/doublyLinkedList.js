@@ -1,3 +1,5 @@
+'use strict';
+
 class DoublyLinkedList {
 	constructor(...nodes) {
 		this.count = 0;
