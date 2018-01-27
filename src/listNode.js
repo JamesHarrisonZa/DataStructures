@@ -1,3 +1,5 @@
+'use strict';
+
 class ListNode {
 	/**
 	 * @param {any} value 
