@@ -10,11 +10,11 @@ class BinaryTree {
 		//this._root;
 		this.count = 0;
 		
-		// for (const node of nodes) {
-		// 	this.insert(node);
-		// }
+		for (const node of nodes) {
+			this.insert(node);
+		}
 	}
-
+	
 	insert(node) {
 		//this._root = node;
 		this.count ++;
