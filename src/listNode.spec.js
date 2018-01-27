@@ -1,3 +1,5 @@
+'use strict';
+
 const ListNode = require('./listNode');
 const assert = require('assert');
 
