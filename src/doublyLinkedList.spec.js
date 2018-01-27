@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const DoublyLinkedList = require('./doublyLinkedList');
 const ListNode = require('./listNode');
