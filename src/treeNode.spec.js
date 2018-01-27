@@ -24,5 +24,14 @@ describe('A TreeNode,', () => {
 				assert.equal(actual, expected);
 			});
 		});
+
+		describe('.right,', () => {
+			it('should return the rightChild Node', () => {
+				const node = new TreeNode(1);
+				const actual = new TreeNode(0, null, node).right;
+				const expected = node;
+				assert.equal(actual, expected);
+			});
+		});
 	});
 });
