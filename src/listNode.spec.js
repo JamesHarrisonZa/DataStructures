@@ -10,7 +10,7 @@ describe('A ListNode,', () => {
 			it('should return that value', () => {
 				const actual = new ListNode(42).value;
 				const expected = 42;
-				assert.equal(actual, expected)
+				assert.equal(actual, expected);
 			});
 		});
 	});
@@ -21,7 +21,7 @@ describe('A ListNode,', () => {
 				const nextNode = new ListNode(1, null, null);
 				const actual = new ListNode(0, nextNode).next;
 				const expected = nextNode;
-				assert.equal(actual, expected)
+				assert.equal(actual, expected);
 			});
 		});
 	});
@@ -32,7 +32,7 @@ describe('A ListNode,', () => {
 				const previousNode = new ListNode(-1, null, null);
 				const actual = new ListNode(0, null, previousNode).previous;
 				const expected = previousNode;
-				assert.equal(actual, expected)
+				assert.equal(actual, expected);
 			});
 		});
 	});
