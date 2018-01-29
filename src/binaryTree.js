@@ -15,8 +15,17 @@ class BinaryTree {
 		}
 	}
 	
+	/**
+	 * @param {TreeNode} node 
+	 */
 	insert(node) {
-		if (!this.root) this.root = node;
+		if (!this.root) {
+			this.root = node;
+		} else {
+			if (node.value > this.root.value) this.root.right = node;
+			if (node.value < this.root.value) this.root.left = node;
+		}
+
 		this.count ++;
 		return this;
 	}
