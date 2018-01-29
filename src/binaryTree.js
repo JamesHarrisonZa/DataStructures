@@ -7,7 +7,7 @@ class BinaryTree {
 	 * @param {Enumerator<TreeNode>} nodes 
 	 */
 	constructor(...nodes) {
-		//this._root;
+		this.root;
 		this.count = 0;
 		
 		for (const node of nodes) {
@@ -16,7 +16,7 @@ class BinaryTree {
 	}
 	
 	insert(node) {
-		//this._root = node;
+		if (!this.root) this.root = node;
 		this.count ++;
 		return this;
 	}

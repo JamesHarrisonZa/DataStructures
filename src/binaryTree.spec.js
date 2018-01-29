@@ -46,5 +46,13 @@ describe('A BinaryTree,', () => {
 				assert.equal(actual, expected);
 			});
 		});
+
+		describe('.root,', () => {
+			it('should return the root Node', () => {
+				const actual = new BinaryTree(nodeA, nodeB, nodeC).root;
+				const expected = nodeA;
+				assert.equal(actual, expected);
+			});
+		});
 	});
 });
