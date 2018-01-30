@@ -65,13 +65,42 @@ describe('A BinarySearchTree,', () => {
 		});
 	});
 
-	describe('with multiple items,', () => {
+	describe('with items in increasing order (1,2,3),', () => {
 
 		describe('.count,', () => {
-			it('should have count of three', () => {
+			it('should return the count', () => {
 				const actual = new BinarySearchTree(nodeOne, nodeTwo, nodeThree).count;
 				const expected = 3;
 				assert.equal(actual, expected);
+			});
+		});
+
+		describe('should add the Nodes to the right of each other', () => {
+			
+			describe('.root.right,', () => {
+				it('should return the next increasing node', () => {
+					const tree = new BinarySearchTree(nodeOne, nodeTwo, nodeThree);
+					const actual = tree.root.right;
+					const expected = nodeTwo;
+				});
+			});
+
+			describe('.root.right.right,', () => {
+				it('should return the next increasing node', () => {
+					const tree = new BinarySearchTree(nodeOne, nodeTwo, nodeThree);
+					const actual = tree.root.right.right;
+					const expected = nodeThree;
+				});
+			});
+		});
+
+		describe('.insert(nodeZero)', () => {
+			describe('.root.left,', () => {
+				it('should return nodeZero', () => {
+					const tree = new BinarySearchTree(nodeOne, nodeTwo, nodeThree).insert(nodeZero);
+					const actual = tree.root.left;
+					const expected = nodeZero;
+				});
 			});
 		});
 	});
