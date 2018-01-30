@@ -2,7 +2,7 @@
 
 const TreeNode = require('./treeNode');
 
-class BinaryTree {
+class BinarySearchTree {
 	/**
 	 * @param {Enumerator<TreeNode>} nodes 
 	 */
@@ -31,4 +31,4 @@ class BinaryTree {
 	}
 }
 
-module.exports = BinaryTree;
+module.exports = BinarySearchTree;
