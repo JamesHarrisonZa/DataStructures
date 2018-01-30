@@ -4,7 +4,7 @@ const BinarySearchTree = require('./binarySearchTree');
 const TreeNode = require('./treeNode');
 const assert = require('assert');
 
-describe.only('A BinarySearchTree,', () => {
+describe('A BinarySearchTree', () => {
 
 	let nodeZero, nodeOne, nodeTwo, nodeThree;
 	beforeEach(() => {
@@ -14,9 +14,9 @@ describe.only('A BinarySearchTree,', () => {
 		nodeThree = new TreeNode(3);
 	});
 
-	describe('with no items,', () => {
+	describe('with no items', () => {
 
-		describe('.count,', () => {
+		describe('.count', () => {
 			it('should have count of zero', () => {
 				const actual = new BinarySearchTree().count;
 				const expected = 0;
@@ -24,9 +24,9 @@ describe.only('A BinarySearchTree,', () => {
 			});
 		});
 
-		describe('insert(node),', () => {
+		describe('insert(node)', () => {
 
-			describe('.count,', () => {
+			describe('.count', () => {
 				it('should return a count of one', () => {
 					const actual = new BinarySearchTree().insert(new TreeNode(1)).count;
 					const expected = 1;
@@ -34,7 +34,7 @@ describe.only('A BinarySearchTree,', () => {
 				});
 			});
 
-			describe('.root,', () => {
+			describe('.root', () => {
 				it('should return the root Node', () => {
 					const nodeOne = new TreeNode(1);
 					const actual = new BinarySearchTree(nodeOne).root;
@@ -43,8 +43,8 @@ describe.only('A BinarySearchTree,', () => {
 				});
 			});
 
-			describe('insert(node) with a larger value,', () => {
-				describe('.root.right,', () => {
+			describe('insert(node) with a larger value', () => {
+				describe('.root.right', () => {
 					it('should return the larger value Node', () => {
 						const actual = new BinarySearchTree(nodeOne, nodeTwo).root.right;
 						const expected = nodeTwo;
@@ -53,8 +53,8 @@ describe.only('A BinarySearchTree,', () => {
 				});
 			});
 
-			describe('insert(node) with a smaller value,', () => {
-				describe('.root.left,', () => {
+			describe('insert(node) with a smaller value', () => {
+				describe('.root.left', () => {
 					it('should return the smaller value Node', () => {
 						const actual = new BinarySearchTree(nodeOne, nodeZero).root.left;
 						const expected = nodeZero;
@@ -65,9 +65,9 @@ describe.only('A BinarySearchTree,', () => {
 		});
 	});
 
-	describe('with items in increasing order (1,2,3),', () => {
+	describe('with items in increasing order (1,2,3)', () => {
 
-		describe('.count,', () => {
+		describe('.count', () => {
 			it('should return the count', () => {
 				const actual = new BinarySearchTree(nodeOne, nodeTwo, nodeThree).count;
 				const expected = 3;
@@ -77,7 +77,7 @@ describe.only('A BinarySearchTree,', () => {
 
 		describe('should add the Nodes to the right of each other', () => {
 
-			describe('.root.right,', () => {
+			describe('.root.right', () => {
 				it('should return the next increasing node', () => {
 					const tree = new BinarySearchTree(nodeOne, nodeTwo, nodeThree);
 					const actual = tree.root.right;
@@ -85,7 +85,7 @@ describe.only('A BinarySearchTree,', () => {
 				});
 			});
 
-			describe('.root.right.right,', () => {
+			describe('.root.right.right', () => {
 				it('should return the next increasing node', () => {
 					const tree = new BinarySearchTree(nodeOne, nodeTwo, nodeThree);
 					const actual = tree.root.right.right;
@@ -95,7 +95,7 @@ describe.only('A BinarySearchTree,', () => {
 		});
 
 		describe('.insert(nodeZero)', () => {
-			describe('.root.left,', () => {
+			describe('.root.left', () => {
 				it('should return nodeZero', () => {
 					const tree = new BinarySearchTree(nodeOne, nodeTwo, nodeThree).insert(nodeZero);
 					const actual = tree.root.left;
@@ -106,7 +106,7 @@ describe.only('A BinarySearchTree,', () => {
 		});
 	});
 
-	describe('with a mixture of items that should spread accross three levels,', () => {
+	describe('with a mixture of items that should spread accross three levels', () => {
 
 				   //1
 			//0			//2

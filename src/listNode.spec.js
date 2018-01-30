@@ -3,9 +3,9 @@
 const ListNode = require('./listNode');
 const assert = require('assert');
 
-describe('A ListNode,', () => {
+describe('A ListNode', () => {
 	
-	describe('set with a given value,', () => {
+	describe('set with a given value', () => {
 		describe('.value, ', () => {
 			it('should return that value', () => {
 				const actual = new ListNode(42).value;
@@ -15,7 +15,7 @@ describe('A ListNode,', () => {
 		});
 	});
 
-	describe('set with a next Node,', () => {
+	describe('set with a next Node', () => {
 		describe('.next, ', () => {
 			it('should return the next Node', () => {
 				const nextNode = new ListNode(1, null, null);
@@ -26,7 +26,7 @@ describe('A ListNode,', () => {
 		});
 	});
 
-	describe('set with a previous Node,', () => {
+	describe('set with a previous Node', () => {
 		describe('.next, ', () => {
 			it('should return the previous Node', () => {
 				const previousNode = new ListNode(-1, null, null);

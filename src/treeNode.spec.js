@@ -3,10 +3,10 @@
 const TreeNode = require('./treeNode');
 const assert = require('assert');
 
-describe('A TreeNode,', () => {
+describe('A TreeNode', () => {
 
-	describe('set with a given value,', () => {
-		describe('.value,', () => {
+	describe('set with a given value', () => {
+		describe('.value', () => {
 			it('should return that value', () => {
 				const actual = new TreeNode(0).value;
 				const expected = 0;
@@ -15,8 +15,8 @@ describe('A TreeNode,', () => {
 		});
 	});
 
-	describe('set with child Nodes,', () => {
-		describe('.left,', () => {
+	describe('set with child Nodes', () => {
+		describe('.left', () => {
 			it('should return the leftChild Node', () => {
 				const node = new TreeNode(1);
 				const actual = new TreeNode(0, node).left;
@@ -25,7 +25,7 @@ describe('A TreeNode,', () => {
 			});
 		});
 
-		describe('.right,', () => {
+		describe('.right', () => {
 			it('should return the rightChild Node', () => {
 				const node = new TreeNode(1);
 				const actual = new TreeNode(0, null, node).right;
