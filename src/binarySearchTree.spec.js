@@ -4,7 +4,7 @@ const BinarySearchTree = require('./binarySearchTree');
 const TreeNode = require('./treeNode');
 const assert = require('assert');
 
-describe('A BinarySearchTree,', () => {
+describe.only('A BinarySearchTree,', () => {
 
 	let nodeZero, nodeOne, nodeTwo, nodeThree;
 	beforeEach(() => {
@@ -25,7 +25,7 @@ describe('A BinarySearchTree,', () => {
 		});
 
 		describe('insert(node),', () => {
-			
+
 			describe('.count,', () => {
 				it('should return a count of one', () => {
 					const actual = new BinarySearchTree().insert(new TreeNode(1)).count;
@@ -76,7 +76,7 @@ describe('A BinarySearchTree,', () => {
 		});
 
 		describe('should add the Nodes to the right of each other', () => {
-			
+
 			describe('.root.right,', () => {
 				it('should return the next increasing node', () => {
 					const tree = new BinarySearchTree(nodeOne, nodeTwo, nodeThree);
@@ -100,7 +100,58 @@ describe('A BinarySearchTree,', () => {
 					const tree = new BinarySearchTree(nodeOne, nodeTwo, nodeThree).insert(nodeZero);
 					const actual = tree.root.left;
 					const expected = nodeZero;
+					assert.equal(actual, expected);
 				});
+			});
+		});
+	});
+
+	describe('with a mixture of items that should spread accross three levels,', () => {
+
+				   //1
+			//0			//2
+		//-1 //0.5	//1.5 //3
+
+		let nodeMinusOne, nodeHalf, nodeOneAndAHalf;
+		beforeEach(() => {
+			nodeMinusOne = new TreeNode(-1);
+			nodeHalf = new TreeNode(0.5);
+			nodeOneAndAHalf = new TreeNode(1.5);
+		});
+
+		describe('.root.left.left', () => {
+			it('should return the Node with the smallest value', () => {
+				const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+				const actual = tree.root.left.left;
+				const expected = nodeMinusOne;
+				assert.equal(actual, expected);
+			});
+		});
+
+		describe('.root.left.right', () => {
+			it('should return the Node with the second smallest value', () => {
+				const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+				const actual = tree.root.left.right;
+				const expected = nodeHalf;
+				assert.equal(actual, expected);
+			});
+		});
+
+		describe('.root.right.left', () => {
+			it('should return the Node with the second largest value', () => {
+				const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+				const actual = tree.root.right.left;
+				const expected = nodeOneAndAHalf;
+				assert.equal(actual, expected);
+			});
+		});
+
+		describe('.root.right.right', () => {
+			it('should return the Node with the largest value', () => {
+				const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+				const actual = tree.root.right.right;
+				const expected = nodeThree;
+				assert.equal(actual, expected);
 			});
 		});
 	});

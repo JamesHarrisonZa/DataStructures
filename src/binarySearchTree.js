@@ -18,14 +18,28 @@ class BinarySearchTree {
 	/**
 	 * @param {TreeNode} node 
 	 */
-	insert(node) {
+	insert(node, parentNode) {
 		if (!this.root) {
 			this.root = node;
-		} else {
-			if (node.value > this.root.value) this.root.right = node;
-			if (node.value < this.root.value) this.root.left = node;
+		} else if (!parentNode) {
+			return this.insert(node, this.root);
 		}
-
+		else {
+			if (node.value > parentNode.value) {
+				if(!parentNode.right) {
+					parentNode.right = node
+				} else {
+					return this.insert(node, parentNode.right);
+				}
+			} 
+			if (node.value < parentNode.value){
+				if(!parentNode.left) {
+					parentNode.left = node
+				} else {
+					return this.insert(node, parentNode.left);
+				}
+			}
+		}
 		this.count ++;
 		return this;
 	}
