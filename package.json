@@ -4,7 +4,8 @@
   "description": "",
   "main": "",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha src/**/*spec.js",
+    "test-watch": "mocha -w src/**/*spec.js"
   },
   "repository": {
     "type": "git",
