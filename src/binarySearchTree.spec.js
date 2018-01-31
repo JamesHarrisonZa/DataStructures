@@ -170,13 +170,13 @@ describe('A BinarySearchTree', () => {
 				});
 			});
 
-			// describe('.root.right.right', () => {
-			// 	it('should be null', () => {
-			// 		const actual = new BinarySearchTree(nodeOne, nodeTwo, nodeThree).remove(nodeThree).root.right.right;
-			// 		const expected = null;
-			// 		assert.equal(actual, expected);
-			// 	});
-			// });
+			describe('.root.right.right', () => {
+				it('should be null', () => {
+					const actual = new BinarySearchTree(nodeOne, nodeTwo, nodeThree).remove(nodeThree).root.right.right;
+					const expected = null;
+					assert.equal(actual, expected);
+				});
+			});
 		});
 	});
 

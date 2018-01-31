@@ -24,19 +24,17 @@ class BinarySearchTree {
 			this.root = node;
 		else if (!parentNode)
 			return this.insert(node, this.root);
-		else {
-			if (node.value > parentNode.value) {
-				if (!parentNode.right) 
-					parentNode.right = node;
-				else 
-					return this.insert(node, parentNode.right);
-			} 
-			if (node.value < parentNode.value){
-				if (!parentNode.left) 
-					parentNode.left = node;
-				else 
-					return this.insert(node, parentNode.left);
-			}
+		else if (node.value > parentNode.value) {
+			if (!parentNode.right) 
+				parentNode.right = node;
+			else 
+				return this.insert(node, parentNode.right);
+		} 
+		else if (node.value < parentNode.value) {
+			if (!parentNode.left) 
+				parentNode.left = node;
+			else 
+				return this.insert(node, parentNode.left);
 		}
 		this.count ++;
 		return this;
@@ -57,6 +55,9 @@ class BinarySearchTree {
 		}
 		else if (node === parentNode.left) {
 			parentNode.left = null;
+		}
+		else if (node.value > parentNode.right.value){
+			return this.remove(node, parentNode.right);
 		}
 
 		this.count --;
