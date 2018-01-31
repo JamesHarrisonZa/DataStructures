@@ -269,7 +269,7 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		describe.only('.remove() a value from the second level left', () => {
+		describe('.remove() a value from the second level left', () => {
 			it('should move one of the leaf nodes up a level', () => {
 				const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(0);
 				const actual = tree.root.left.value;
