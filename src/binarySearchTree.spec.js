@@ -181,6 +181,28 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
+		describe('.remove() the second smallest value', () => {
+			describe('.root.left.right', () => {
+				it('should be null', () => {
+					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+					const actual = tree.remove(nodeHalf).root.left.right;
+					const expected = null;
+					assert.equal(actual, expected);
+				});
+			});
+		});
+
+		describe('.remove() the second largest value', () => {
+			describe('.root.right.left', () => {
+				it('should be null', () => {
+					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+					const actual = tree.remove(nodeOneAndAHalf).root.right.left;
+					const expected = null;
+					assert.equal(actual, expected);
+				});
+			});
+		});
+
 		describe('.remove() the largest value', () => {
 			describe('.root.right.right', () => {
 				it('should be null', () => {
