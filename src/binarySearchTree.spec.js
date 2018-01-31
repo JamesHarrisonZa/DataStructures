@@ -63,6 +63,16 @@ describe('A BinarySearchTree', () => {
 				});
 			});
 		});
+
+		describe('remove(node)', () => {
+			describe('.count', () => {
+				it('should still be zero', () => {
+					const actual = new BinarySearchTree().remove(nodeZero).count;
+					const expected = 0;
+					assert.equal(actual, expected);
+				});
+			});
+		});
 	});
 
 	describe('with items in increasing order (1,2,3)', () => {
@@ -113,6 +123,14 @@ describe('A BinarySearchTree', () => {
 					assert.equal(actual, expected);
 				});
 			});
+
+			// describe('.root.right.right', () => {
+			// 	it('should be null', () => {
+			// 		const actual = new BinarySearchTree(nodeOne, nodeTwo, nodeThree).remove(nodeThree).root.right.right;
+			// 		const expected = null;
+			// 		assert.equal(actual, expected);
+			// 	});
+			// });
 		});
 	});
 

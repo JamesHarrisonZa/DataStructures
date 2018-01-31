@@ -46,6 +46,8 @@ class BinarySearchTree {
 	 * @param {TreeNode} node 
 	 */
 	remove(node) {
+		if (!this.root) return this;
+
 		this.count --;
 		return this;
 	}
