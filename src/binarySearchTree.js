@@ -56,11 +56,16 @@ class BinarySearchTree {
 			this.root = null;
 		else if (!parentNode)
 			return this.remove(value, this.root);
-		else if (parentNode.right && value === parentNode.right.value){
-			parentNode.right = null;
+		else if (parentNode.right && value === parentNode.right.value) { //isNodeToRemove
+			if (!(parentNode.right.right && parentNode.right.left)) //hasChildren
+				parentNode.right = null;
+			else {
+				if (parentNode.right.right) 
+					parentNode.right = parentNode.right.right;
+			}
 			this.count--;
 		} 
-		else if (parentNode.left && value === parentNode.left.value) {
+		else if (parentNode.left && value === parentNode.left.value) { 
 			parentNode.left = null;
 			this.count--;
 		}
