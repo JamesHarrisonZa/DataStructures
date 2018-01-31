@@ -17,6 +17,7 @@ class BinarySearchTree {
 	
 	/**
 	 * @param {TreeNode} node 
+	 * @param {TreeNode} parentNode
 	 */
 	insert(node, parentNode) {
 		if (!this.root)
@@ -38,6 +39,14 @@ class BinarySearchTree {
 			}
 		}
 		this.count ++;
+		return this;
+	}
+
+	/**
+	 * @param {TreeNode} node 
+	 */
+	remove(node) {
+		this.count --;
 		return this;
 	}
 }

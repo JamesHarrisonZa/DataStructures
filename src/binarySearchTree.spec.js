@@ -104,13 +104,23 @@ describe('A BinarySearchTree', () => {
 				});
 			});
 		});
+
+		describe('.remove(NodeThree)', () => {
+			describe('.count', () => {
+				it('should reduce the count by one', () => {
+					const actual = new BinarySearchTree(nodeOne, nodeTwo, nodeThree).remove(nodeThree).count;
+					const expected = 2;
+					assert.equal(actual, expected);
+				});
+			});
+		});
 	});
 
 	describe('with a mixture of items that should spread accross three levels', () => {
 
-				   //1
-			//0			//2
-		//-1 //0.5	//1.5 //3
+		//         (1)
+		//   (0)          (2)
+		//(-1) (0.5)  (1.5) (3)
 
 		let nodeMinusOne, nodeHalf, nodeOneAndAHalf;
 		beforeEach(() => {
