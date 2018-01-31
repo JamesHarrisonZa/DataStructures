@@ -60,7 +60,9 @@ class BinarySearchTree {
 			if (!hasChildren(currentNode.right))
 				currentNode.right = null;
 			else {
-				if (currentNode.right.right) 
+				if (!currentNode.right.right)
+					currentNode.right = currentNode.right.left;
+				else
 					currentNode.right = currentNode.right.right;
 			}
 			this.count--;
@@ -69,7 +71,9 @@ class BinarySearchTree {
 			if (!hasChildren(currentNode.left))
 				currentNode.left = null;
 			else {
-				if (currentNode.left.right)
+				if (!currentNode.left.right)
+					currentNode.left = currentNode.left.left;
+				else
 					currentNode.left = currentNode.left.right;
 			}
 			this.count--;

@@ -260,20 +260,38 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		describe('.remove() a value from the second level right', () => {
+		describe('.remove() a value that has children left (first case)', () => {
 			it('should move one of the leaf nodes up a level', () => {
-				const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(2);
-				const actual = tree.root.right.value;
-				const expected = 3;
+				const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(0.5);
+				const actual = tree.remove(0).root.left.value;
+				const expected = -1;
 				assert.equal(actual, expected);
 			});
 		});
 
-		describe('.remove() a value from the second level left', () => {
+		describe('.remove() a value that has children right (first case)', () => {
 			it('should move one of the leaf nodes up a level', () => {
-				const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(0);
-				const actual = tree.root.left.value;
+				const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(3);
+				const actual = tree.remove(2).root.right.value;
+				const expected = 1.5;
+				assert.equal(actual, expected);
+			});
+		});
+
+		describe('.remove() a value that has children left (second case)', () => {
+			it('should move one of the leaf nodes up a level', () => {
+				const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+				const actual = tree.remove(0).root.left.value;
 				const expected = 0.5;
+				assert.equal(actual, expected);
+			});
+		});
+
+		describe('.remove() a value that has children  right (second case)', () => {
+			it('should move one of the leaf nodes up a level', () => {
+				const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+				const actual = tree.remove(2).root.right.value;
+				const expected = 3;
 				assert.equal(actual, expected);
 			});
 		});
