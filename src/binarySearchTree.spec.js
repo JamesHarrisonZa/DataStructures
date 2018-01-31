@@ -62,6 +62,16 @@ describe('A BinarySearchTree', () => {
 					});
 				});
 			});
+
+			describe('remove(node)', () => {
+				describe('.root', () => {
+					it('should be null', () => {
+						const actual = new BinarySearchTree(nodeOne).remove(nodeOne).root;
+						const expected = null;
+						assert.equal(actual, expected);
+					});
+				});
+			});
 		});
 
 		describe('remove(node)', () => {
