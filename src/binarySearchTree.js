@@ -50,20 +50,21 @@ class BinarySearchTree {
 			this.root = null;
 		else if (!parentNode)
 			return this.remove(node, this.root);
-		else if (node === parentNode.right) {
+		else if (node === parentNode.right){
 			parentNode.right = null;
-		}
+			this.count--;
+		} 
 		else if (node === parentNode.left) {
 			parentNode.left = null;
+			this.count--;
 		}
-		else if (node.value > parentNode.value){
-			return this.remove(node, parentNode.right);
+		else if (node.value > parentNode.value) {
+			if (parentNode.right)
+				return this.remove(node, parentNode.right);
 		}
 		else if (node.value < parentNode.value) {
 			return this.remove(node, parentNode.left);
 		}
-
-		this.count --;
 		return this;
 	}
 }

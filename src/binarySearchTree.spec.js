@@ -134,9 +134,17 @@ describe('A BinarySearchTree', () => {
 			nodeOneAndAHalf = new TreeNode(1.5);
 		});
 
+		describe('.count', () => {
+			it('should match the number of items', () => {
+				const actual = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeThree, nodeOneAndAHalf).count;
+				const expected = 7;
+				assert.equal(actual, expected);
+			});
+		});
+
 		describe('.root.left.left', () => {
 			it('should return the Node with the smallest value', () => {
-				const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+				const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeThree, nodeOneAndAHalf);
 				const actual = tree.root.left.left;
 				const expected = nodeMinusOne;
 				assert.equal(actual, expected);
@@ -145,7 +153,7 @@ describe('A BinarySearchTree', () => {
 
 		describe('.root.left.right', () => {
 			it('should return the Node with the second smallest value', () => {
-				const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+				const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeThree, nodeOneAndAHalf);
 				const actual = tree.root.left.right;
 				const expected = nodeHalf;
 				assert.equal(actual, expected);
@@ -154,7 +162,7 @@ describe('A BinarySearchTree', () => {
 
 		describe('.root.right.left', () => {
 			it('should return the Node with the second largest value', () => {
-				const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+				const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeThree, nodeOneAndAHalf);
 				const actual = tree.root.right.left;
 				const expected = nodeOneAndAHalf;
 				assert.equal(actual, expected);
@@ -163,7 +171,7 @@ describe('A BinarySearchTree', () => {
 
 		describe('.root.right.right', () => {
 			it('should return the Node with the largest value', () => {
-				const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+				const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeThree, nodeOneAndAHalf);
 				const actual = tree.root.right.right;
 				const expected = nodeThree;
 				assert.equal(actual, expected);
@@ -173,7 +181,7 @@ describe('A BinarySearchTree', () => {
 		describe('.remove() the smallest value', () => {
 			describe('.root.left.left', () => {
 				it('should be null', () => {
-					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeThree, nodeOneAndAHalf);
 					const actual = tree.remove(nodeMinusOne).root.left.left;
 					const expected = null;
 					assert.equal(actual, expected);
@@ -184,7 +192,7 @@ describe('A BinarySearchTree', () => {
 		describe('.remove() the second smallest value', () => {
 			describe('.root.left.right', () => {
 				it('should be null', () => {
-					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeThree, nodeOneAndAHalf);
 					const actual = tree.remove(nodeHalf).root.left.right;
 					const expected = null;
 					assert.equal(actual, expected);
@@ -195,7 +203,7 @@ describe('A BinarySearchTree', () => {
 		describe('.remove() the second largest value', () => {
 			describe('.root.right.left', () => {
 				it('should be null', () => {
-					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeThree, nodeOneAndAHalf);
 					const actual = tree.remove(nodeOneAndAHalf).root.right.left;
 					const expected = null;
 					assert.equal(actual, expected);
@@ -206,9 +214,20 @@ describe('A BinarySearchTree', () => {
 		describe('.remove() the largest value', () => {
 			describe('.root.right.right', () => {
 				it('should be null', () => {
-					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeThree, nodeOneAndAHalf);
 					const actual = tree.remove(nodeThree).root.right.right;
 					const expected = null;
+					assert.equal(actual, expected);
+				});
+			});
+		});
+
+		describe('.remove() a value that doesnt exist', () => {
+			describe('.count', () => {
+				it('should remain unchanged', () => {
+					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeThree, nodeOneAndAHalf);
+					const actual = tree.remove(new TreeNode(42)).count;
+					const expected = 7;
 					assert.equal(actual, expected);
 				});
 			});
