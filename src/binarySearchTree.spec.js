@@ -228,5 +228,16 @@ describe('A BinarySearchTree', () => {
 				assert.equal(actual, expected);
 			});
 		});
+
+		describe('.remove() the smallest value', () => {
+			describe('.root.left.left', () => {
+				it('should be null', () => {
+					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeTwo, nodeThree, nodeOneAndAHalf);
+					const actual = tree.remove(nodeMinusOne).root.left.left;
+					const expected = null;
+					assert.equal(actual, expected);
+				});
+			});
+		});
 	});
 });

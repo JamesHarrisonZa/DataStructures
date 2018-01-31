@@ -56,8 +56,11 @@ class BinarySearchTree {
 		else if (node === parentNode.left) {
 			parentNode.left = null;
 		}
-		else if (node.value > parentNode.right.value){
+		else if (node.value > parentNode.value){
 			return this.remove(node, parentNode.right);
+		}
+		else if (node.value < parentNode.value) {
+			return this.remove(node, parentNode.left);
 		}
 
 		this.count --;
