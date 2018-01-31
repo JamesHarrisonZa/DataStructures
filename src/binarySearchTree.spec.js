@@ -264,5 +264,16 @@ describe('A BinarySearchTree', () => {
 				});
 			});
 		});
+
+		describe('.insert() a value that exists already', () => {
+			describe('.count', () => {
+				it('should remain unchanged', () => {
+					const tree = new BinarySearchTree(nodeOne, nodeZero, nodeTwo, nodeMinusOne, nodeHalf, nodeThree, nodeOneAndAHalf);
+					const actual = tree.insert(new TreeNode(1)).count;
+					const expected = 7;
+					assert.equal(actual, expected);
+				});
+			});
+		});
 	});
 });

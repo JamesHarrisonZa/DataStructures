@@ -20,23 +20,28 @@ class BinarySearchTree {
 	 * @param {TreeNode} parentNode
 	 */
 	insert(node, parentNode) {
-		if (!this.root)
+		if (!this.root) {
 			this.root = node;
+			this.count++;
+		}
 		else if (!parentNode)
 			return this.insert(node, this.root);
 		else if (node.value > parentNode.value) {
-			if (!parentNode.right) 
+			if (!parentNode.right) {
 				parentNode.right = node;
+				this.count++;
+			}
 			else 
 				return this.insert(node, parentNode.right);
 		} 
 		else if (node.value < parentNode.value) {
-			if (!parentNode.left) 
+			if (!parentNode.left) {
 				parentNode.left = node;
+				this.count++;
+			}
 			else 
 				return this.insert(node, parentNode.left);
 		}
-		this.count ++;
 		return this;
 	}
 
