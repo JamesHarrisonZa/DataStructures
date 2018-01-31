@@ -260,8 +260,8 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		describe('.remove() a value that has children left (first case)', () => {
-			it('should move one of the leaf nodes up a level', () => {
+		describe('.remove() left (first case) node has no right child', () => {
+			it('then node’s left replaces node', () => {
 				const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(0.5);
 				const actual = tree.remove(0).root.left.value;
 				const expected = -1;
@@ -269,8 +269,8 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		describe('.remove() a value that has children right (first case)', () => {
-			it('should move one of the leaf nodes up a level', () => {
+		describe('.remove() right (first case) node has no right child', () => {
+			it('then node’s left replaces node', () => {
 				const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(3);
 				const actual = tree.remove(2).root.right.value;
 				const expected = 1.5;
@@ -278,8 +278,8 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		describe('.remove() a value that has children left (second case)', () => {
-			it('should move one of the leaf nodes up a level', () => {
+		describe('.remove() left (second case) node’s right child has no left child', () => {
+			it('then node’s right child replaces node', () => {
 				const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
 				const actual = tree.remove(0).root.left.value;
 				const expected = 0.5;
@@ -287,11 +287,20 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		describe('.remove() a value that has children  right (second case)', () => {
-			it('should move one of the leaf nodes up a level', () => {
+		describe('.remove() right (second case) node’s right child has no left child', () => {
+			it('then node’s right child replaces node', () => {
 				const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
 				const actual = tree.remove(2).root.right.value;
 				const expected = 3;
+				assert.equal(actual, expected);
+			});
+		});
+
+		describe('.remove() left (third case) node’s right child has a left child', () => {
+			xit('then replace node with node’s right child’s leftmost child', () => {
+				const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+				const actual = tree.remove(0).root.left.value;
+				const expected = 0.5;
 				assert.equal(actual, expected);
 			});
 		});
