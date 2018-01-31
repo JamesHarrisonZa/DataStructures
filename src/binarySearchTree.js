@@ -52,9 +52,9 @@ class BinarySearchTree {
 			this.root = null;
 		else if (!parentNode)
 			return this.remove(node, this.root);
-		// if (node.value === parentNode.value) {
-
-		// }
+		else if (node === parentNode.right) {
+			parentNode.right = null;
+		}
 
 		this.count --;
 		return this;

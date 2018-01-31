@@ -44,11 +44,29 @@ describe('A BinarySearchTree', () => {
 			});
 
 			describe('insert(node) with a larger value', () => {
+				
 				describe('.root.right', () => {
 					it('should return the larger value Node', () => {
 						const actual = new BinarySearchTree(nodeOne, nodeTwo).root.right;
 						const expected = nodeTwo;
 						assert.equal(actual, expected);
+					});
+				});
+
+				describe('.remove(node) with the larger value', () => {
+					describe('.root.right', () => {
+						it('should be null', () => {
+							const actual = new BinarySearchTree(nodeOne, nodeTwo).remove(nodeTwo).root.right;
+							const expected = null;
+							assert.equal(actual, expected);
+						});
+					});
+					describe('.count', () => {
+						it('should be one less', () => {
+							const actual = new BinarySearchTree(nodeOne, nodeTwo).remove(nodeTwo).count;
+							const expected = 1;
+							assert.equal(actual, expected);
+						});
 					});
 				});
 			});
