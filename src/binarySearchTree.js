@@ -55,6 +55,9 @@ class BinarySearchTree {
 		else if (node === parentNode.right) {
 			parentNode.right = null;
 		}
+		else if (node === parentNode.left) {
+			parentNode.left = null;
+		}
 
 		this.count --;
 		return this;
