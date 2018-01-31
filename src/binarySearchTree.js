@@ -16,59 +16,60 @@ class BinarySearchTree {
 	}
 	
 	/**
-	 * @param {TreeNode} node 
+	 * @param {number} value
 	 * @param {TreeNode} parentNode
 	 */
-	insert(node, parentNode) {
+	insert(value, parentNode) {
 		if (!this.root) {
-			this.root = node;
+			this.root = new TreeNode(value);
 			this.count++;
 		}
 		else if (!parentNode)
-			return this.insert(node, this.root);
-		else if (node.value > parentNode.value) {
+			return this.insert(value, this.root);
+		else if (value > parentNode.value) {
 			if (!parentNode.right) {
-				parentNode.right = node;
+				parentNode.right = new TreeNode(value);
 				this.count++;
 			}
 			else 
-				return this.insert(node, parentNode.right);
+				return this.insert(value, parentNode.right);
 		} 
-		else if (node.value < parentNode.value) {
+		else if (value < parentNode.value) {
 			if (!parentNode.left) {
-				parentNode.left = node;
+				parentNode.left = new TreeNode(value);
 				this.count++;
 			}
 			else 
-				return this.insert(node, parentNode.left);
+				return this.insert(value, parentNode.left);
 		}
 		return this;
 	}
 
 	/**
-	 * @param {TreeNode} node 
+	 * @param {number} value
+	 * @param {TreeNode} parentNode
 	 */
-	remove(node, parentNode) {
+	remove(value, parentNode) {
 		if (!this.root) 
 			return this;
-		else if (node === this.root)
+		else if (value === this.root.value)
 			this.root = null;
 		else if (!parentNode)
-			return this.remove(node, this.root);
-		else if (node === parentNode.right){
+			return this.remove(value, this.root);
+		else if (parentNode.right && value === parentNode.right.value){
 			parentNode.right = null;
 			this.count--;
 		} 
-		else if (node === parentNode.left) {
+		else if (parentNode.left && value === parentNode.left.value) {
 			parentNode.left = null;
 			this.count--;
 		}
-		else if (node.value > parentNode.value) {
+		else if (value > parentNode.value) {
 			if (parentNode.right)
-				return this.remove(node, parentNode.right);
+				return this.remove(value, parentNode.right);
 		}
-		else if (node.value < parentNode.value) {
-			return this.remove(node, parentNode.left);
+		else if (value < parentNode.value) {
+			return this.remove(value, parentNode.left);
 		}
 		return this;
 	}
