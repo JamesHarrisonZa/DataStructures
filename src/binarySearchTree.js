@@ -76,28 +76,36 @@ const isNodeToRemove = (node, value) => node && value === node.value;
 
 const hasNoChildren = (node) => !(node.left || node.right);
 
-const performRemoveLeft = (tree, currentNode) => {
+const hasOneChild = (node) => (node.left && !node.right) || (!node.left && node.right);
 
-	if (hasNoChildren(currentNode.left))
-		currentNode.left = null;
-	else {
-		if (!currentNode.left.right)
-			currentNode.left = currentNode.left.left;
+const performRemoveLeft = (tree, parentNode) => {
+
+	if (hasNoChildren(parentNode.left))
+		parentNode.left = null;
+	else if (hasOneChild(parentNode.left)) {
+		if (!parentNode.left.right)
+			parentNode.left = parentNode.left.left;
 		else
-			currentNode.left = currentNode.left.right;
+			parentNode.left = parentNode.left.right;
+	}
+	else { //hasTwoChildren
+		parentNode.left = parentNode.left.right;
 	}
 	tree.count--;
 };
 
-const performRemoveRight = (tree, currentNode) => {
+const performRemoveRight = (tree, parentNode) => {
 
-	if (hasNoChildren(currentNode.right))
-		currentNode.right = null;
-	else {
-		if (!currentNode.right.right)
-			currentNode.right = currentNode.right.left;
+	if (hasNoChildren(parentNode.right))
+		parentNode.right = null;
+	else if (hasOneChild(parentNode.right)) {
+		if (!parentNode.right.right)
+			parentNode.right = parentNode.right.left;
 		else
-			currentNode.right = currentNode.right.right;
+			parentNode.right = parentNode.right.right;
+	}
+	else { //hasTwoChildren
+		parentNode.right = parentNode.right.right;
 	}
 	tree.count--;
 };

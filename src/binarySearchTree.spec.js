@@ -282,33 +282,24 @@ describe('A BinarySearchTree', () => {
 					assert.equal(actual, expected);
 				});
 			});
+		});
 
-			describe('left of the root 2', () => {
-				it('should change the parent’s reference to the node’s child', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-					const actual = tree.remove(0).root.left.value;
-					const expected = 0.5;
-					assert.equal(actual, expected);
-				});
-			});
-
-			describe('right of the root 2', () => {
-				it('should change the parent’s reference to the node’s child', () => {
+		describe.only('.remove() a value with two children', () => {
+			
+			describe('right of the root at level 2', () => {
+				it('should change the parent’s reference  to the "next biggest"', () => {
 					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
 					const actual = tree.remove(2).root.right.value;
 					const expected = 3;
 					assert.equal(actual, expected);
 				});
 			});
-		});
 
-		xdescribe('.remove() a value with two children', () => {
-			
-			describe('node’s right child has a left child', () => {
+			describe('left of the root at level 2', () => {
 				it('should change the parent’s reference  to the "next biggest"', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2);
+					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
 					const actual = tree.remove(0).root.left.value;
-					const expected = 0.2;
+					const expected = 0.5;
 					assert.equal(actual, expected);
 				});
 			});
