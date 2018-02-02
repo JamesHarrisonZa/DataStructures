@@ -89,7 +89,10 @@ const performRemoveLeft = (tree, parentNode) => {
 			parentNode.left = parentNode.left.right;
 	}
 	else { //hasTwoChildren
-		parentNode.left = parentNode.left.right;
+		if (!parentNode.left.right.left)
+			parentNode.left = parentNode.left.right;
+		else 
+			parentNode.left = parentNode.left.right.left;
 	}
 	tree.count--;
 };
@@ -105,7 +108,10 @@ const performRemoveRight = (tree, parentNode) => {
 			parentNode.right = parentNode.right.right;
 	}
 	else { //hasTwoChildren
-		parentNode.right = parentNode.right.right;
+		if (!parentNode.right.right.left)
+			parentNode.right = parentNode.right.right;
+		else 
+			parentNode.right = parentNode.right.right.left;
 	}
 	tree.count--;
 };
