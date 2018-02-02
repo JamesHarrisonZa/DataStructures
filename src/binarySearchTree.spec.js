@@ -174,12 +174,25 @@ describe('A BinarySearchTree', () => {
 		});
 
 		describe('.remove() a value that doesnt exist', () => {
-			describe('.count', () => {
-				it('should remain unchanged', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-					const actual = tree.remove(42).count;
-					const expected = 7;
-					assert.equal(actual, expected);
+			describe('right', () => {
+				describe('.count', () => {
+					it('should remain unchanged', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+						const actual = tree.remove(42).count;
+						const expected = 7;
+						assert.equal(actual, expected);
+					});
+				});
+			});
+			
+			describe('left', () => {
+				describe('.count', () => {
+					it('should remain unchanged', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+						const actual = tree.remove(-42).count;
+						const expected = 7;
+						assert.equal(actual, expected);
+					});
 				});
 			});
 		});

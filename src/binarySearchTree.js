@@ -61,9 +61,12 @@ class BinarySearchTree {
 		else if (value > currentNode.value) {
 			if (currentNode.right)
 				return this.remove(value, currentNode.right);
+			//Otherwise doesnt exist
 		}
 		else if (value < currentNode.value) {
+			if (currentNode.left)
 				return this.remove(value, currentNode.left);
+			//Otherwise doesnt exist
 		}
 		return this;
 	}
