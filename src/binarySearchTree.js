@@ -20,25 +20,20 @@ class BinarySearchTree {
 	 * @param {TreeNode} currentNode
 	 */
 	insert(value, currentNode) {
-		if (!this.root) {
-			this.root = new TreeNode(value);
-			this.count++;
-		}
-		else if (!currentNode)
+		if (!this.root) 
+			performInsertRoot(this, value);
+		else if (!currentNode) 
 			return this.insert(value, this.root);
+			
 		else if (value > currentNode.value) {
-			if (!currentNode.right) {
-				currentNode.right = new TreeNode(value);
-				this.count++;
-			}
+			if (!currentNode.right) 
+				performInsertRight(this, currentNode, value);
 			else 
 				return this.insert(value, currentNode.right);
 		} 
 		else if (value < currentNode.value) {
-			if (!currentNode.left) {
-				currentNode.left = new TreeNode(value);
-				this.count++;
-			}
+			if (!currentNode.left)
+				performInsertLeft(this, currentNode, value);
 			else 
 				return this.insert(value, currentNode.left);
 		}
@@ -51,9 +46,12 @@ class BinarySearchTree {
 	 */
 	remove(value, currentNode) {
 
-		if (!this.root) return this;
-		else if (value === this.root.value) this.root = null;
-		else if (!currentNode) return this.remove(value, this.root);
+		if (!this.root) 
+			return this;
+		else if (value === this.root.value) 
+			this.root = null;
+		else if (!currentNode) 
+			return this.remove(value, this.root);
 
 		else if (isNodeToRemove(currentNode.left, value))
 			performRemoveLeft(this, currentNode);
@@ -65,12 +63,25 @@ class BinarySearchTree {
 				return this.remove(value, currentNode.right);
 		}
 		else if (value < currentNode.value) {
-			if (currentNode.left)
 				return this.remove(value, currentNode.left);
 		}
 		return this;
 	}
 }
+const performInsertRoot = (tree, value) => {
+	tree.root = new TreeNode(value);
+	tree.count++;
+}
+
+const performInsertLeft = (tree, parentNode, value) => {
+	parentNode.left = new TreeNode(value);
+	tree.count++;
+};
+
+const performInsertRight = (tree, parentNode, value) => {
+	parentNode.right = new TreeNode(value);
+	tree.count++;
+};
 
 const isNodeToRemove = (node, value) => node && value === node.value;
 
