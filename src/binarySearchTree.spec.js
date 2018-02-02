@@ -323,19 +323,63 @@ describe('A BinarySearchTree', () => {
 			});
 
 			describe('right of the root, has a right tree with multiple left nodes', () => {
+				
+				//                       remove(2)
+				//         (1)               =>          (1)         
+				//   (0)          (2)        =>    (0)         (2.2)
+				//(-1) (0.5)  (1.5) (3)      => (-1) (0.5)  (1.5) (3)
+				//                 (2.5)     =>                  (2.5)
+				//                (2.2)      =>                      
+
 				it('should change the parent’s reference  to the "next biggest"', () => {
 					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5).insert(2.2);
 					const actual = tree.remove(2).root.right.value;
 					const expected = 2.2;
 					assert.equal(actual, expected);
 				});
+
+				it.only('should update the swapped nodes .left', () => {
+					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5).insert(2.2);
+					const actual = tree.remove(2).root.right.left.value;
+					const expected = 1.5;
+					assert.equal(actual, expected);
+				});
+
+				it.only('should update the swapped nodes .right', () => {
+					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5).insert(2.2);
+					const actual = tree.remove(2).root.right.right.value;
+					const expected = 3;
+					assert.equal(actual, expected);
+				});
 			});
 
-			describe('left of the root, has a right tree with a left node', () => {
+			describe('left of the root, has a right tree with multiple left nodes', () => {
+
+						//                       remove(0)
+						//         (1)               =>          (1)         
+						//   (0)          (2)        =>    (0.1)        (2)
+						//(-1) (0.5)  (1.5) (3)      => (-1) (0.5)  (1.5) (3)
+						//    (0.2)                  =>     (0.2)            
+						//   (0.1)                   =>                      
+
 				it('should change the parent’s reference  to the "next biggest"', () => {
 					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2).insert(0.1);
 					const actual = tree.remove(0).root.left.value;
 					const expected = 0.1;
+					assert.equal(actual, expected);
+				});
+
+				it.only('should update the swapped nodes .left', () => {
+					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2).insert(0.1);
+					const actual = tree.remove(0).root.left.left.value;
+					const expected = -1;
+					assert.equal(actual, expected);
+				});
+
+				it.only('should update the swapped nodes .right', () => {
+					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2).insert(0.1);
+					const actual = tree.remove(0).root.left.right.value;
+					const expected = 0.5;
 					assert.equal(actual, expected);
 				});
 			});

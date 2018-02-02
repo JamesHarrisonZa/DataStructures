@@ -96,6 +96,8 @@ const performRemoveLeft = (tree, parentNode) => {
 			while (leftMostNode.left) {
 				leftMostNode = leftMostNode.left;
 			}
+			leftMostNode.left = parentNode.left.left;
+			leftMostNode.right = parentNode.left.right;
 			parentNode.left = leftMostNode;
 		}
 	}
@@ -120,6 +122,8 @@ const performRemoveRight = (tree, parentNode) => {
 			while (leftMostNode.left){
 				leftMostNode = leftMostNode.left;
 			}
+			leftMostNode.left = parentNode.right.left;
+			leftMostNode.right = parentNode.right.right;
 			parentNode.right = leftMostNode;
 		}
 	}
