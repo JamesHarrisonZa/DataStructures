@@ -321,6 +321,24 @@ describe('A BinarySearchTree', () => {
 					assert.equal(actual, expected);
 				});
 			});
+
+			describe('right of the root, has a right tree with multiple left nodes', () => {
+				it('should change the parent’s reference  to the "next biggest"', () => {
+					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5).insert(2.2);
+					const actual = tree.remove(2).root.right.value;
+					const expected = 2.2;
+					assert.equal(actual, expected);
+				});
+			});
+
+			describe('left of the root, has a right tree with a left node', () => {
+				it('should change the parent’s reference  to the "next biggest"', () => {
+					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2).insert(0.1);
+					const actual = tree.remove(0).root.left.value;
+					const expected = 0.1;
+					assert.equal(actual, expected);
+				});
+			});
 		});
 
 	});
