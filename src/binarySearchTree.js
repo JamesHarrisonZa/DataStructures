@@ -74,11 +74,11 @@ class BinarySearchTree {
 
 const isNodeToRemove = (node, value) => node && value === node.value;
 
-const hasChildren = (node) => node.left || node.right;
+const hasNoChildren = (node) => !(node.left || node.right);
 
 const performRemoveLeft = (tree, currentNode) => {
 
-	if (!hasChildren(currentNode.left))
+	if (hasNoChildren(currentNode.left))
 		currentNode.left = null;
 	else {
 		if (!currentNode.left.right)
@@ -91,7 +91,7 @@ const performRemoveLeft = (tree, currentNode) => {
 
 const performRemoveRight = (tree, currentNode) => {
 
-	if (!hasChildren(currentNode.right))
+	if (hasNoChildren(currentNode.right))
 		currentNode.right = null;
 	else {
 		if (!currentNode.right.right)
