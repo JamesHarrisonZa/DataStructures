@@ -54,9 +54,9 @@ class BinarySearchTree {
 			return this.remove(value, this.root);
 
 		else if (isNodeToRemove(currentNode.left, value))
-			performRemoveLeft(this, currentNode);
+			performRemove(this, currentNode, true);
 		else if (isNodeToRemove(currentNode.right, value))
-			performRemoveRight(this, currentNode);
+			performRemove(this, currentNode);
 		
 		else if (value > currentNode.value) {
 			if (currentNode.right)
@@ -92,59 +92,34 @@ const hasNoChildren = (node) => !(node.left || node.right);
 
 const hasOneChild = (node) => (node.left && !node.right) || (!node.left && node.right);
 
-const performRemoveLeft = (tree, parentNode) => {
+const performRemove = (tree, parentNode, left) => {
 
-	if (hasNoChildren(parentNode.left))
-		parentNode.left = null;
-	else if (hasOneChild(parentNode.left)) {
-		if (!parentNode.left.right)
-			parentNode.left = parentNode.left.left;
+	const currentNode = (left) ? parentNode.left: parentNode.right;
+
+	if (hasNoChildren(currentNode)){
+		(left) ? parentNode.left = null: parentNode.right = null;
+		
+	}
+	else if (hasOneChild(currentNode)) {
+		if (!currentNode.right)
+			(left) ? parentNode.left = parentNode.left.left: parentNode.right = parentNode.right.left;
 		else
-			parentNode.left = parentNode.left.right;
+			(left) ? parentNode.left = parentNode.left.right: parentNode.right = parentNode.right.right;
 	}
 	else { //hasTwoChildren
-		if (!parentNode.left.right.left)
-			parentNode.left = parentNode.left.right;
+		if (!currentNode.right.left)
+			(left) ? parentNode.left = parentNode.left.right: parentNode.right = parentNode.right.right;
 		else {
 			let previousNode;
-			let leftMostNode = parentNode.left.right.left;
+			let leftMostNode = currentNode.right.left;
 			while (leftMostNode.left) {
 				previousNode = leftMostNode;
 				leftMostNode = leftMostNode.left;
 			}
 			if (previousNode) previousNode.left = null;
-			leftMostNode.left = parentNode.left.left;
-			leftMostNode.right = parentNode.left.right;
-			parentNode.left = leftMostNode;
-		}
-	}
-	tree.count--;
-};
-
-const performRemoveRight = (tree, parentNode) => {
-
-	if (hasNoChildren(parentNode.right))
-		parentNode.right = null;
-	else if (hasOneChild(parentNode.right)) {
-		if (!parentNode.right.right)
-			parentNode.right = parentNode.right.left;
-		else
-			parentNode.right = parentNode.right.right;
-	}
-	else { //hasTwoChildren
-		if (!parentNode.right.right.left)
-			parentNode.right = parentNode.right.right;
-		else {
-			let previousNode;
-			let leftMostNode = parentNode.right.right.left;
-			while (leftMostNode.left) {
-				previousNode = leftMostNode;
-				leftMostNode = leftMostNode.left;
-			}
-			if (previousNode) previousNode.left = null;
-			leftMostNode.left = parentNode.right.left;
-			leftMostNode.right = parentNode.right.right;
-			parentNode.right = leftMostNode;
+			leftMostNode.left = currentNode.left;
+			leftMostNode.right = currentNode.right;
+			(left) ? parentNode.left = leftMostNode: parentNode.right = leftMostNode;
 		}
 	}
 	tree.count--;
