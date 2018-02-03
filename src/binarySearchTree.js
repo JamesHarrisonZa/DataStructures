@@ -108,12 +108,12 @@ const performRemove = (tree, parentNode, left) => {
 				: parentNode.right = parentNode.right.right;
 	}
 	else { //hasTwoChildren
-		if (!currentNode.right.left)
+		if (!hasRightTreeWithLeftNodes(currentNode))
 			(left)
 				? parentNode.left = parentNode.left.right
 				: parentNode.right = parentNode.right.right;
 		else {
-			let leftMostNode = getNextBiggest(currentNode);
+			const leftMostNode = getNextBiggest(currentNode);
 			(left)
 				? parentNode.left = leftMostNode
 				: parentNode.right = leftMostNode;
@@ -122,17 +122,19 @@ const performRemove = (tree, parentNode, left) => {
 	tree.count--;
 };
 
-const getNextBiggest = (currentNode) => {
+const hasRightTreeWithLeftNodes = (node) => node.right.left;
+
+const getNextBiggest = (node) => {
 	let previousNode;
-	let leftMostNode = currentNode.right.left;
+	let leftMostNode = node.right.left;
 	while (leftMostNode.left) {
 		previousNode = leftMostNode;
 		leftMostNode = leftMostNode.left;
 	}
 	if (previousNode)
 		previousNode.left = null;
-	leftMostNode.left = currentNode.left;
-	leftMostNode.right = currentNode.right;
+	leftMostNode.left = node.left;
+	leftMostNode.right = node.right;
 	return leftMostNode;
 }
 
