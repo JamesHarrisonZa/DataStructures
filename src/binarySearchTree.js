@@ -21,19 +21,19 @@ class BinarySearchTree {
 	 */
 	insert(value, currentNode) {
 		if (!this.root) 
-			performInsertRoot(this, value);
+			performInsert(this, value);
 		else if (!currentNode) 
 			return this.insert(value, this.root);
 			
 		else if (value > currentNode.value) {
 			if (!currentNode.right) 
-				performInsertRight(this, currentNode, value);
+				performInsert(this, value, currentNode);
 			else 
 				return this.insert(value, currentNode.right);
 		} 
 		else if (value < currentNode.value) {
 			if (!currentNode.left)
-				performInsertLeft(this, currentNode, value);
+				performInsert(this, value, currentNode, true);
 			else 
 				return this.insert(value, currentNode.left);
 		}
@@ -71,18 +71,14 @@ class BinarySearchTree {
 		return this;
 	}
 }
-const performInsertRoot = (tree, value) => {
-	tree.root = new TreeNode(value);
-	tree.count++;
-}
 
-const performInsertLeft = (tree, parentNode, value) => {
-	parentNode.left = new TreeNode(value);
-	tree.count++;
-};
-
-const performInsertRight = (tree, parentNode, value) => {
-	parentNode.right = new TreeNode(value);
+const performInsert = (tree, value, parentNode, left) => {
+	
+	(!tree.root)
+		? tree.root = new TreeNode(value)
+		: (left)
+			? parentNode.left = new TreeNode(value)
+			: parentNode.right = new TreeNode(value);
 	tree.count++;
 };
 
@@ -97,8 +93,9 @@ const performRemove = (tree, parentNode, left) => {
 	const currentNode = (left) ? parentNode.left: parentNode.right;
 
 	if (hasNoChildren(currentNode)){
-		(left) ? parentNode.left = null: parentNode.right = null;
-		
+		(left) 
+			? parentNode.left = null
+			: parentNode.right = null;
 	}
 	else if (hasOneChild(currentNode)) {
 		if (!currentNode.right)
