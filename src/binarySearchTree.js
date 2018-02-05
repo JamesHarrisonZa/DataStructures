@@ -20,24 +20,9 @@ class BinarySearchTree {
 	 * @param {TreeNode} currentNode
 	 * @return {BinarySearchTree}
 	 */
-	insert(value, currentNode) {
-		if (!this.root)
-			performInsert(this, value);
-		else if (!currentNode)
-			return this.insert(value, this.root);
+	insert(value) {
 
-		else if (value > currentNode.value) {
-			if (!currentNode.right)
-				performInsert(this, value, currentNode);
-			else
-				return this.insert(value, currentNode.right);
-		}
-		else if (value < currentNode.value) {
-			if (!currentNode.left)
-				performInsert(this, value, currentNode, true);
-			else
-				return this.insert(value, currentNode.left);
-		}
+		insertRecursive(this, this.root, value);
 		return this;
 	}
 
@@ -71,12 +56,31 @@ class BinarySearchTree {
 		if (this.root.value === value) 
 			return true;
 
-		if (containsRecursive(value, this.root))
+		if (containsRecursive(this.root, value))
 			return true;
 
 		return false;
 	}
 }
+
+const insertRecursive = (tree, currentNode, value) => {
+
+	if (!tree.root)
+		performInsert(tree, null, value);
+
+	else if (value > currentNode.value) {
+		if (!currentNode.right)
+			performInsert(tree, currentNode, value);
+		else
+			insertRecursive(tree, currentNode.right, value);
+	}
+	else if (value < currentNode.value) {
+		if (!currentNode.left)
+			performInsert(tree, currentNode, value, true);
+		else
+			insertRecursive(tree, currentNode.left, value);
+	}
+};
 
 const removeRecursive = (tree, currentNode, value) => {
 
@@ -97,7 +101,7 @@ const removeRecursive = (tree, currentNode, value) => {
 	}
 };
 
-const containsRecursive = (value, currentNode) => {
+const containsRecursive = (currentNode, value) => {
 	if (isSearchNode(currentNode.right, value))
 		return true;
 	if (isSearchNode(currentNode.left, value))
@@ -105,17 +109,17 @@ const containsRecursive = (value, currentNode) => {
 	
 	if (value > currentNode.value) {
 		if (currentNode.right)
-			return containsRecursive(value, currentNode.right);
+			return containsRecursive(currentNode.right, value);
 		//Otherwise doesnt exist
 	}
 	else if (value < currentNode.value) {
 		if (currentNode.left)
-			return containsRecursive(value, currentNode.left);
+			return containsRecursive(currentNode.left, value);
 		//Otherwise doesnt exist
 	}
 };
 
-const performInsert = (tree, value, parentNode, left) => {
+const performInsert = (tree, parentNode, value, left) => {
 
 	(!tree.root)
 		? tree.root = new TreeNode(value)
@@ -168,6 +172,7 @@ const performRemove = (tree, parentNode, left) => {
 const hasRightTreeWithLeftNodes = (node) => node.right.left;
 
 const getNextBiggest = (node) => {
+	
 	let previousNode;
 	let leftMostNode = node.right.left;
 	while (leftMostNode.left) {
