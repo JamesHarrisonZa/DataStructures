@@ -18,6 +18,7 @@ class BinarySearchTree {
 	/**
 	 * @param {number} value
 	 * @param {TreeNode} currentNode
+	 * @return {BinarySearchTree}
 	 */
 	insert(value, currentNode) {
 		if (!this.root)
@@ -43,6 +44,7 @@ class BinarySearchTree {
 	/**
 	 * @param {number} value
 	 * @param {TreeNode} currentNode
+	 * @return {BinarySearchTree}
 	 */
 	remove(value, currentNode) {
 
@@ -69,6 +71,14 @@ class BinarySearchTree {
 			//Otherwise doesnt exist
 		}
 		return this;
+	}
+
+	/**
+	 * @param {number} value
+	 * @return {boolean}
+	 */
+	contains(value) {
+		return false;
 	}
 }
 

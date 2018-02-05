@@ -412,5 +412,17 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
+		describe.only('.contains() a value that doesnt exist', () => {
+			it('should return false', () => {
+				const actual = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).contains(42);
+				const expected = false;
+				assert.equal(actual, expected);
+			});
+		});
+
+		//toArray
+		//traverse inOrder
+
+		//prettyPrint?
 	});
 });
