@@ -17,85 +17,99 @@ describe('A BinarySearchTree', () => {
 		});
 
 		describe('.insert()', () => {
-
-			describe('.count', () => {
-				it('should return a count of one', () => {
-					const actual = new BinarySearchTree().insert(1).count;
-					const expected = 1;
-					assert.equal(actual, expected);
-				});
-			});
-
-			describe('.root', () => {
-				it('should return the root Node', () => {
-					const actual = new BinarySearchTree(1).root.value;
-					const expected = 1;
-					assert.equal(actual, expected);
-				});
-			});
-
-			describe('a larger value', () => {
+			describe('a value', () => {
 				
-				describe('.root.right', () => {
-					it('should return the larger value Node', () => {
-						const actual = new BinarySearchTree(1, 2).root.right.value;
-						const expected = 2;
+				describe('.count', () => {
+					it('should return a count of one', () => {
+						const actual = new BinarySearchTree().insert(1).count;
+						const expected = 1;
 						assert.equal(actual, expected);
 					});
 				});
 
-				describe('.remove() with the larger value', () => {
-					describe('.root.right', () => {
-						it('should be null', () => {
-							const actual = new BinarySearchTree(1, 2).remove(2).root.right;
-							const expected = null;
-							assert.equal(actual, expected);
-						});
-					});
-					describe('.count', () => {
-						it('should be one less', () => {
-							const actual = new BinarySearchTree(1, 2).remove(2).count;
-							const expected = 1;
-							assert.equal(actual, expected);
-						});
-					});
-				});
-			});
-
-			describe('a smaller value', () => {
-				
-				describe('.root.left', () => {
-					it('should return the smaller value Node', () => {
-						const actual = new BinarySearchTree(1, 0).root.left.value;
-						const expected = 0;
+				describe('.root', () => {
+					it('should return the root Node', () => {
+						const actual = new BinarySearchTree(1).root.value;
+						const expected = 1;
 						assert.equal(actual, expected);
 					});
 				});
 
-				describe('.remove() with the smaller value', () => {
-					describe('.root.left', () => {
-						it('should be null', () => {
-							const actual = new BinarySearchTree(1, 0).remove(0).root.left;
-							const expected = null;
-							assert.equal(actual, expected);
+				describe('.insert()', () => {
+					describe('a larger value', () => {
+					
+						describe('.root.right', () => {
+							it('should return the larger value Node', () => {
+								const actual = new BinarySearchTree(1, 2).root.right.value;
+								const expected = 2;
+								assert.equal(actual, expected);
+							});
+						});
+
+						describe('.remove()', () => {
+							describe('with the larger value', () => {
+
+								describe('.root.right', () => {
+									it('should be null', () => {
+										const actual = new BinarySearchTree(1, 2).remove(2).root.right;
+										const expected = null;
+										assert.equal(actual, expected);
+									});
+								});
+								describe('.count', () => {
+									it('should be one less', () => {
+										const actual = new BinarySearchTree(1, 2).remove(2).count;
+										const expected = 1;
+										assert.equal(actual, expected);
+									});
+								});
+							});
 						});
 					});
-					describe('.count', () => {
-						it('should be one less', () => {
-							const actual = new BinarySearchTree(1, 0).remove(0).count;
-							const expected = 1;
-							assert.equal(actual, expected);
+				});
+
+				describe('.insert()', () => {
+					describe('a smaller value', () => {
+					
+						describe('.root.left', () => {
+							it('should return the smaller value Node', () => {
+								const actual = new BinarySearchTree(1, 0).root.left.value;
+								const expected = 0;
+								assert.equal(actual, expected);
+							});
+						});
+
+						describe('.remove()', () => {
+							describe('with the smaller value', () => {
+							
+								describe('.root.left', () => {
+									it('should be null', () => {
+										const actual = new BinarySearchTree(1, 0).remove(0).root.left;
+										const expected = null;
+										assert.equal(actual, expected);
+									});
+								});
+								describe('.count', () => {
+									it('should be one less', () => {
+										const actual = new BinarySearchTree(1, 0).remove(0).count;
+										const expected = 1;
+										assert.equal(actual, expected);
+									});
+								});
+							});
 						});
 					});
 				});
 			});
 
 			describe('.remove()', () => {
-				describe('.root', () => {
-					it('should be null', () => {
-						const actual = new BinarySearchTree(1).remove(1).root;
-						const expected = null;
-						assert.equal(actual, expected);
+				describe('the root value', () => {
+					describe('.root', () => {
+						it('should be null', () => {
+							const actual = new BinarySearchTree(1).remove(1).root;
+							const expected = null;
+							assert.equal(actual, expected);
+						});
 					});
 				});
 			});
@@ -111,7 +125,15 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-
+		describe('.contains()', () => {
+			describe('any value', () => {
+				it('should return false', () => {
+					const actual = new BinarySearchTree().contains(42);
+					const expected = false;
+					assert.equal(actual, expected);
+				});
+			});
+		});
 	});
 
 	describe('with a mixture of items that should spread accross three levels', () => {
