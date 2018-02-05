@@ -135,33 +135,33 @@ const hasNoChildren = (node) => !(node.left || node.right);
 
 const hasOneChild = (node) => (node.left && !node.right) || (!node.left && node.right);
 
-const performRemove = (tree, parentNode, left) => {
+const performRemove = (tree, parentNode, leftOfParent) => {
 
-	const childNode = (left) ? parentNode.left : parentNode.right;
+	const nodeToRemove = (leftOfParent) ? parentNode.left : parentNode.right;
 
-	if (hasNoChildren(childNode)) {
-		(left)
+	if (hasNoChildren(nodeToRemove)) {
+		(leftOfParent)
 			? parentNode.left = null
 			: parentNode.right = null;
 	}
-	else if (hasOneChild(childNode)) {
-		if (!childNode.right)
-			(left)
+	else if (hasOneChild(nodeToRemove)) {
+		if (!nodeToRemove.right)
+			(leftOfParent)
 				? parentNode.left = parentNode.left.left
 				: parentNode.right = parentNode.right.left;
 		else
-			(left)
+			(leftOfParent)
 				? parentNode.left = parentNode.left.right
 				: parentNode.right = parentNode.right.right;
 	}
 	else { //hasTwoChildren
-		if (!hasRightTreeWithLeftNodes(childNode))
-			(left)
+		if (!hasRightTreeWithLeftNodes(nodeToRemove))
+			(leftOfParent)
 				? parentNode.left = parentNode.left.right
 				: parentNode.right = parentNode.right.right;
 		else {
-			const leftMostNode = getNextBiggest(childNode);
-			(left)
+			const leftMostNode = getNextBiggest(nodeToRemove);
+			(leftOfParent)
 				? parentNode.left = leftMostNode
 				: parentNode.right = leftMostNode;
 		}
