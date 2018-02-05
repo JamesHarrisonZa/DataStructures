@@ -230,6 +230,7 @@ describe('A BinarySearchTree', () => {
 		});
 
 		describe('.remove()', () => {
+
 			describe('a value that doesnt exist', () => {
 				describe('right', () => {
 					describe('.count', () => {
@@ -465,6 +466,34 @@ describe('A BinarySearchTree', () => {
 						const actual = tree.remove(0).root.left.right.left.left;
 						const expected = null;
 						assert.equal(actual, expected);
+					});
+				});
+			});
+
+			xdescribe('a value at the root of the tree', () => {
+				describe('.root', () => {
+					describe('.value', () => {
+						it('should be the new root', () => {
+							const actual = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(1).root.value;
+							const expected = 1.5;
+							assert.equal(actual, expected);
+						});
+					});
+
+					describe('.left.value', () => {
+						it('should be unchanged', () => {
+							const actual = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(1).root.left.value;
+							const expected = 0;
+							assert.equal(actual, expected);
+						});
+					});
+					
+					describe('.right.value', () => {
+						it('should be unchanged', () => {
+							const actual = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(1).root.right.value;
+							const expected = 2;
+							assert.equal(actual, expected);
+						});
 					});
 				});
 			});
