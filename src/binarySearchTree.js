@@ -35,12 +35,10 @@ class BinarySearchTree {
 
 		if (!this.root)
 			return this;
-		if (value === this.root.value){
-			performRemove(this, null, this.root);
-		}	
+		if (value === this.root.value)
+			performRemove(this, null, this.root);	
 		else
 			removeRecursive(this, this.root, value);
-
 		return this;
 	}
 
@@ -81,6 +79,16 @@ const insertRecursive = (tree, parentNode, value) => {
 	}
 };
 
+const performInsert = (tree, parentNode, value, left) => {
+
+	(!tree.root)
+		? tree.root = new TreeNode(value)
+		: (left)
+			? parentNode.left = new TreeNode(value)
+			: parentNode.right = new TreeNode(value);
+	tree.count++;
+};
+
 const removeRecursive = (tree, parentNode, value) => {
 
 	if (isSearchNode(parentNode.left, value))
@@ -100,49 +108,7 @@ const removeRecursive = (tree, parentNode, value) => {
 	}
 };
 
-const containsRecursive = (currentNode, value) => {
-	if (isSearchNode(currentNode.right, value))
-		return true;
-	if (isSearchNode(currentNode.left, value))
-		return true;
-	
-	if (value > currentNode.value) {
-		if (currentNode.right)
-			return containsRecursive(currentNode.right, value);
-		//Otherwise doesnt exist
-	}
-	else if (value < currentNode.value) {
-		if (currentNode.left)
-			return containsRecursive(currentNode.left, value);
-		//Otherwise doesnt exist
-	}
-};
-
-const performInsert = (tree, parentNode, value, left) => {
-
-	(!tree.root)
-		? tree.root = new TreeNode(value)
-		: (left)
-			? parentNode.left = new TreeNode(value)
-			: parentNode.right = new TreeNode(value);
-	tree.count++;
-};
-
 const isSearchNode = (node, value) => node && node.value === value;
-
-const hasNoChildren = (node) => !(node.left || node.right);
-
-const hasOneChild = (node) => (node.left && !node.right) || (!node.left && node.right);
-
-const updateReference = (tree, parentNode, leftOfParent, value) => {
-
-	if (!parentNode) 
-		tree.root = value;
-	else
-		(leftOfParent)
-			? parentNode.left = value
-			: parentNode.right = value;
-};
 
 const performRemove = (tree, parentNode, nodeToRemove, leftOfParent) => {
 
@@ -166,6 +132,10 @@ const performRemove = (tree, parentNode, nodeToRemove, leftOfParent) => {
 	tree.count--;
 };
 
+const hasNoChildren = (node) => !(node.left || node.right);
+
+const hasOneChild = (node) => (node.left && !node.right) || (!node.left && node.right);
+
 const hasRightTreeWithLeftNodes = (node) => node.right.left;
 
 const getNextBiggest = (node) => {
@@ -182,5 +152,33 @@ const getNextBiggest = (node) => {
 	leftMostNode.right = node.right;
 	return leftMostNode;
 }
+
+const updateReference = (tree, parentNode, leftOfParent, value) => {
+
+	if (!parentNode)
+		tree.root = value;
+	else
+		(leftOfParent)
+			? parentNode.left = value
+			: parentNode.right = value;
+};
+
+const containsRecursive = (currentNode, value) => {
+	if (isSearchNode(currentNode.right, value))
+		return true;
+	if (isSearchNode(currentNode.left, value))
+		return true;
+
+	if (value > currentNode.value) {
+		if (currentNode.right)
+			return containsRecursive(currentNode.right, value);
+		//Otherwise doesnt exist
+	}
+	else if (value < currentNode.value) {
+		if (currentNode.left)
+			return containsRecursive(currentNode.left, value);
+		//Otherwise doesnt exist
+	}
+};
 
 module.exports = BinarySearchTree;
