@@ -16,7 +16,7 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		describe('insert()', () => {
+		describe('.insert()', () => {
 
 			describe('.count', () => {
 				it('should return a count of one', () => {
@@ -34,7 +34,7 @@ describe('A BinarySearchTree', () => {
 				});
 			});
 
-			describe('insert() with a larger value', () => {
+			describe('a larger value', () => {
 				
 				describe('.root.right', () => {
 					it('should return the larger value Node', () => {
@@ -62,7 +62,7 @@ describe('A BinarySearchTree', () => {
 				});
 			});
 
-			describe('insert() with a smaller value', () => {
+			describe('a smaller value', () => {
 				
 				describe('.root.left', () => {
 					it('should return the smaller value Node', () => {
@@ -90,7 +90,7 @@ describe('A BinarySearchTree', () => {
 				});
 			});
 
-			describe('remove()', () => {
+			describe('.remove()', () => {
 				describe('.root', () => {
 					it('should be null', () => {
 						const actual = new BinarySearchTree(1).remove(1).root;
@@ -101,7 +101,7 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		describe('remove()', () => {
+		describe('.remove()', () => {
 			describe('.count', () => {
 				it('should still be zero', () => {
 					const actual = new BinarySearchTree().remove(0).count;
@@ -110,6 +110,8 @@ describe('A BinarySearchTree', () => {
 				});
 			});
 		});
+
+
 	});
 
 	describe('with a mixture of items that should spread accross three levels', () => {
