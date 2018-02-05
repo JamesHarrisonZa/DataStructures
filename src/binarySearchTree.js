@@ -46,30 +46,17 @@ class BinarySearchTree {
 	 * @param {TreeNode} currentNode
 	 * @return {BinarySearchTree}
 	 */
-	remove(value, currentNode) {
+	remove(value) {
 
 		if (!this.root)
 			return this;
-		if (value === this.root.value)
+		if (value === this.root.value){
 			this.root = null;
-		if (!currentNode)
-			return this.remove(value, this.root);
+			this.count--;
+		}	
+		else
+			removeRecursive(this, this.root, value);
 
-		if (isSearchNode(currentNode.left, value))
-			performRemove(this, currentNode, true);
-		if (isSearchNode(currentNode.right, value))
-			performRemove(this, currentNode);
-
-		if (value > currentNode.value) {
-			if (currentNode.right)
-				return this.remove(value, currentNode.right);
-			//Otherwise doesnt exist
-		}
-		else if (value < currentNode.value) {
-			if (currentNode.left)
-				return this.remove(value, currentNode.left);
-			//Otherwise doesnt exist
-		}
 		return this;
 	}
 
@@ -90,6 +77,25 @@ class BinarySearchTree {
 		return false;
 	}
 }
+
+const removeRecursive = (tree, currentNode, value) => {
+
+	if (isSearchNode(currentNode.left, value))
+		performRemove(tree, currentNode, true);
+	if (isSearchNode(currentNode.right, value))
+		performRemove(tree, currentNode);
+
+	if (value > currentNode.value) {
+		if (currentNode.right)
+			return removeRecursive(tree, currentNode.right, value,);
+		//Otherwise doesnt exist
+	}
+	else if (value < currentNode.value) {
+		if (currentNode.left)
+			return removeRecursive(tree, currentNode.left, value);
+		//Otherwise doesnt exist
+	}
+};
 
 const containsRecursive = (value, currentNode) => {
 	if (isSearchNode(currentNode.right, value))

@@ -130,15 +130,15 @@ describe('A BinarySearchTree', () => {
 						});
 					});
 				});
-			});
 
-			describe('.remove()', () => {
-				describe('the root value', () => {
-					describe('.root', () => {
-						it('should be null', () => {
-							const actual = new BinarySearchTree(1).remove(1).root;
-							const expected = null;
-							assert.equal(actual, expected);
+				describe('.remove()', () => {
+					describe('the root value', () => {
+						describe('.root', () => {
+							it('should be null', () => {
+								const actual = new BinarySearchTree(1).remove(1).root;
+								const expected = null;
+								assert.equal(actual, expected);
+							});
 						});
 					});
 				});
