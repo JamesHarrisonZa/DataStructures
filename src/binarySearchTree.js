@@ -63,40 +63,40 @@ class BinarySearchTree {
 	}
 }
 
-const insertRecursive = (tree, currentNode, value) => {
+const insertRecursive = (tree, parentNode, value) => {
 
 	if (!tree.root)
 		performInsert(tree, null, value);
 
-	else if (value > currentNode.value) {
-		if (!currentNode.right)
-			performInsert(tree, currentNode, value);
+	else if (value > parentNode.value) {
+		if (!parentNode.right)
+			performInsert(tree, parentNode, value);
 		else
-			insertRecursive(tree, currentNode.right, value);
+			insertRecursive(tree, parentNode.right, value);
 	}
-	else if (value < currentNode.value) {
-		if (!currentNode.left)
-			performInsert(tree, currentNode, value, true);
+	else if (value < parentNode.value) {
+		if (!parentNode.left)
+			performInsert(tree, parentNode, value, true);
 		else
-			insertRecursive(tree, currentNode.left, value);
+			insertRecursive(tree, parentNode.left, value);
 	}
 };
 
-const removeRecursive = (tree, currentNode, value) => {
+const removeRecursive = (tree, parentNode, value) => {
 
-	if (isSearchNode(currentNode.left, value))
-		performRemove(tree, currentNode, true);
-	if (isSearchNode(currentNode.right, value))
-		performRemove(tree, currentNode);
+	if (isSearchNode(parentNode.left, value))
+		performRemove(tree, parentNode, true);
+	if (isSearchNode(parentNode.right, value))
+		performRemove(tree, parentNode);
 
-	if (value > currentNode.value) {
-		if (currentNode.right)
-			return removeRecursive(tree, currentNode.right, value,);
+	if (value > parentNode.value) {
+		if (parentNode.right)
+			return removeRecursive(tree, parentNode.right, value, );
 		//Otherwise doesnt exist
 	}
-	else if (value < currentNode.value) {
-		if (currentNode.left)
-			return removeRecursive(tree, currentNode.left, value);
+	else if (value < parentNode.value) {
+		if (parentNode.left)
+			return removeRecursive(tree, parentNode.left, value);
 		//Otherwise doesnt exist
 	}
 };
@@ -137,15 +137,15 @@ const hasOneChild = (node) => (node.left && !node.right) || (!node.left && node.
 
 const performRemove = (tree, parentNode, left) => {
 
-	const currentNode = (left) ? parentNode.left : parentNode.right;
+	const childNode = (left) ? parentNode.left : parentNode.right;
 
-	if (hasNoChildren(currentNode)) {
+	if (hasNoChildren(childNode)) {
 		(left)
 			? parentNode.left = null
 			: parentNode.right = null;
 	}
-	else if (hasOneChild(currentNode)) {
-		if (!currentNode.right)
+	else if (hasOneChild(childNode)) {
+		if (!childNode.right)
 			(left)
 				? parentNode.left = parentNode.left.left
 				: parentNode.right = parentNode.right.left;
@@ -155,12 +155,12 @@ const performRemove = (tree, parentNode, left) => {
 				: parentNode.right = parentNode.right.right;
 	}
 	else { //hasTwoChildren
-		if (!hasRightTreeWithLeftNodes(currentNode))
+		if (!hasRightTreeWithLeftNodes(childNode))
 			(left)
 				? parentNode.left = parentNode.left.right
 				: parentNode.right = parentNode.right.right;
 		else {
-			const leftMostNode = getNextBiggest(currentNode);
+			const leftMostNode = getNextBiggest(childNode);
 			(left)
 				? parentNode.left = leftMostNode
 				: parentNode.right = leftMostNode;
