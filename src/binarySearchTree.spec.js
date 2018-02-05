@@ -162,34 +162,12 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		describe('.insert() a value that exists already', () => {
-			describe('.count', () => {
-				it('should remain unchanged', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-					const actual = tree.insert(1).count;
-					const expected = 7;
-					assert.equal(actual, expected);
-				});
-			});
-		});
-
-		describe('.remove() a value that doesnt exist', () => {
-			describe('right', () => {
+		describe('.insert()', () => {
+			describe('a value that exists already', () => {
 				describe('.count', () => {
 					it('should remain unchanged', () => {
 						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-						const actual = tree.remove(42).count;
-						const expected = 7;
-						assert.equal(actual, expected);
-					});
-				});
-			});
-			
-			describe('left', () => {
-				describe('.count', () => {
-					it('should remain unchanged', () => {
-						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-						const actual = tree.remove(-42).count;
+						const actual = tree.insert(1).count;
 						const expected = 7;
 						assert.equal(actual, expected);
 					});
@@ -197,226 +175,263 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		describe('.remove() a value with no children', () => {
+		describe('.remove()', () => {
+			describe('a value that doesnt exist', () => {
+				describe('right', () => {
+					describe('.count', () => {
+						it('should remain unchanged', () => {
+							const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+							const actual = tree.remove(42).count;
+							const expected = 7;
+							assert.equal(actual, expected);
+						});
+					});
+				});
 
-			describe('removing the smallest value', () => {
-				describe('.root.left.left', () => {
-					it('should be null', () => {
-						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-						const actual = tree.remove(-1).root.left.left;
-						const expected = null;
+				describe('left', () => {
+					describe('.count', () => {
+						it('should remain unchanged', () => {
+							const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+							const actual = tree.remove(-42).count;
+							const expected = 7;
+							assert.equal(actual, expected);
+						});
+					});
+				});
+			});
+
+			describe('a value with no children', () => {
+
+				describe('removing the smallest value', () => {
+					describe('.root.left.left', () => {
+						it('should be null', () => {
+							const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+							const actual = tree.remove(-1).root.left.left;
+							const expected = null;
+							assert.equal(actual, expected);
+						});
+					});
+					describe('.count', () => {
+						it('should be one less', () => {
+							const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+							const actual = tree.remove(-1).count;
+							const expected = 6;
+							assert.equal(actual, expected);
+						});
+					});
+				});
+
+				describe('removing the second smallest value', () => {
+					describe('.root.left.right', () => {
+						it('should be null', () => {
+							const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+							const actual = tree.remove(0.5).root.left.right;
+							const expected = null;
+							assert.equal(actual, expected);
+						});
+					});
+					describe('.count', () => {
+						it('should be one less', () => {
+							const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+							const actual = tree.remove(0.5).count;
+							const expected = 6;
+							assert.equal(actual, expected);
+						});
+					});
+				});
+
+				describe('removing the second largest value', () => {
+					describe('.root.right.left', () => {
+						it('should be null', () => {
+							const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+							const actual = tree.remove(1.5).root.right.left;
+							const expected = null;
+							assert.equal(actual, expected);
+						});
+					});
+					describe('.count', () => {
+						it('should be one less', () => {
+							const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+							const actual = tree.remove(1.5).count;
+							const expected = 6;
+							assert.equal(actual, expected);
+						});
+					});
+				});
+
+				describe('removing the largest value', () => {
+					describe('.root.right.right', () => {
+						it('should be null', () => {
+							const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+							const actual = tree.remove(3).root.right.right;
+							const expected = null;
+							assert.equal(actual, expected);
+						});
+					});
+					describe('.count', () => {
+						it('should be one less', () => {
+							const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+							const actual = tree.remove(3).count;
+							const expected = 6;
+							assert.equal(actual, expected);
+						});
+					});
+				});
+			});
+
+			describe('a value with one child', () => {
+
+				describe('left of the root', () => {
+					it('should change the parent’s reference to the node’s child', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(0.5);
+						const actual = tree.remove(0).root.left.value;
+						const expected = -1;
 						assert.equal(actual, expected);
 					});
 				});
-				describe('.count', () => {
-					it('should be one less', () => {
-						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-						const actual = tree.remove(-1).count;
-						const expected = 6;
+
+				describe('right of the root', () => {
+					it('should change the parent’s reference to the node’s child', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(3);
+						const actual = tree.remove(2).root.right.value;
+						const expected = 1.5;
 						assert.equal(actual, expected);
 					});
 				});
 			});
 
-			describe('removing the second smallest value', () => {
-				describe('.root.left.right', () => {
-					it('should be null', () => {
+			describe('a value with two children', () => {
+
+				describe('right of the root at level 2', () => {
+					it('should change the parent’s reference  to the "next biggest"', () => {
 						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-						const actual = tree.remove(0.5).root.left.right;
+						const actual = tree.remove(2).root.right.value;
+						const expected = 3;
+						assert.equal(actual, expected);
+					});
+				});
+
+				describe('left of the root at level 2', () => {
+					it('should change the parent’s reference  to the "next biggest"', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
+						const actual = tree.remove(0).root.left.value;
+						const expected = 0.5;
+						assert.equal(actual, expected);
+					});
+				});
+
+				describe('right of the root, has a right tree with a left node', () => {
+					it('should change the parent’s reference  to the "next biggest"', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5);
+						const actual = tree.remove(2).root.right.value;
+						const expected = 2.5;
+						assert.equal(actual, expected);
+					});
+				});
+
+				describe('left of the root, has a right tree with a left node', () => {
+					it('should change the parent’s reference  to the "next biggest"', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2);
+						const actual = tree.remove(0).root.left.value;
+						const expected = 0.2;
+						assert.equal(actual, expected);
+					});
+				});
+
+				describe('right of the root, has a right tree with multiple left nodes', () => {
+
+					//                       remove(2)
+					//         (1)               =>          (1)         
+					//   (0)          (2)        =>    (0)         (2.2)
+					//(-1) (0.5)  (1.5) (3)      => (-1) (0.5)  (1.5) (3)
+					//                (2.5)      =>                 (2.5)
+					//               (2.2)       =>                      
+
+					it('should change the parent’s reference  to the "next biggest"', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5).insert(2.2);
+						const actual = tree.remove(2).root.right.value;
+						const expected = 2.2;
+						assert.equal(actual, expected);
+					});
+
+					it('should update the swapped nodes .left', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5).insert(2.2);
+						const actual = tree.remove(2).root.right.left.value;
+						const expected = 1.5;
+						assert.equal(actual, expected);
+					});
+
+					it('should update the swapped nodes .right', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5).insert(2.2);
+						const actual = tree.remove(2).root.right.right.value;
+						const expected = 3;
+						assert.equal(actual, expected);
+					});
+
+					it('should update the node that was referencing the swapped node', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5).insert(2.2);
+						const actual = tree.remove(2).root.right.right.left.left;
 						const expected = null;
 						assert.equal(actual, expected);
 					});
 				});
-				describe('.count', () => {
-					it('should be one less', () => {
-						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-						const actual = tree.remove(0.5).count;
-						const expected = 6;
+
+				describe('left of the root, has a right tree with multiple left nodes', () => {
+
+					//                       remove(0)
+					//         (1)               =>          (1)         
+					//   (0)          (2)        =>    (0.1)        (2)
+					//(-1) (0.5)  (1.5) (3)      => (-1) (0.5)  (1.5) (3)
+					//    (0.2)                  =>     (0.2)            
+					//   (0.1)                   =>                      
+
+					it('should change the parent’s reference  to the "next biggest"', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2).insert(0.1);
+						const actual = tree.remove(0).root.left.value;
+						const expected = 0.1;
+						assert.equal(actual, expected);
+					});
+
+					it('should update the swapped nodes .left', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2).insert(0.1);
+						const actual = tree.remove(0).root.left.left.value;
+						const expected = -1;
+						assert.equal(actual, expected);
+					});
+
+					it('should update the swapped nodes .right', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2).insert(0.1);
+						const actual = tree.remove(0).root.left.right.value;
+						const expected = 0.5;
+						assert.equal(actual, expected);
+					});
+
+					it('should update the node that was referencing the swapped node', () => {
+						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2).insert(0.1);
+						const actual = tree.remove(0).root.left.right.left.left;
+						const expected = null;
 						assert.equal(actual, expected);
 					});
 				});
 			});
-
-			describe('removing the second largest value', () => {
-				describe('.root.right.left', () => {
-					it('should be null', () => {
-						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-						const actual = tree.remove(1.5).root.right.left;
-						const expected = null;
-						assert.equal(actual, expected);
-					});
-				});
-				describe('.count', () => {
-					it('should be one less', () => {
-						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-						const actual = tree.remove(1.5).count;
-						const expected = 6;
-						assert.equal(actual, expected);
-					});
-				});
-			});
-
-			describe('removing the largest value', () => {
-				describe('.root.right.right', () => {
-					it('should be null', () => {
-						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-						const actual = tree.remove(3).root.right.right;
-						const expected = null;
-						assert.equal(actual, expected);
-					});
-				});
-				describe('.count', () => {
-					it('should be one less', () => {
-						const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-						const actual = tree.remove(3).count;
-						const expected = 6;
-						assert.equal(actual, expected);
-					});
-				});
-			});	
 		});
 
-		describe('.remove() a value with one child', () => {
+		describe('.contains()', () => {
 
-			describe('left of the root', () => {
-				it('should change the parent’s reference to the node’s child', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(0.5);
-					const actual = tree.remove(0).root.left.value;
-					const expected = -1;
+			describe('a value that doesnt exist', () => {
+				it('should return false', () => {
+					const actual = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).contains(42);
+					const expected = false;
 					assert.equal(actual, expected);
 				});
 			});
 
-			describe('right of the root', () => {
-				it('should change the parent’s reference to the node’s child', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).remove(3);
-					const actual = tree.remove(2).root.right.value;
-					const expected = 1.5;
+			describe('a value that does exist', () => {
+				xit('should return true', () => {
+					const actual = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).contains(3);
+					const expected = true;
 					assert.equal(actual, expected);
 				});
-			});
-		});
-
-		describe('.remove() a value with two children', () => {
-			
-			describe('right of the root at level 2', () => {
-				it('should change the parent’s reference  to the "next biggest"', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-					const actual = tree.remove(2).root.right.value;
-					const expected = 3;
-					assert.equal(actual, expected);
-				});
-			});
-
-			describe('left of the root at level 2', () => {
-				it('should change the parent’s reference  to the "next biggest"', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5);
-					const actual = tree.remove(0).root.left.value;
-					const expected = 0.5;
-					assert.equal(actual, expected);
-				});
-			});
-
-			describe('right of the root, has a right tree with a left node', () => {
-				it('should change the parent’s reference  to the "next biggest"', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5);
-					const actual = tree.remove(2).root.right.value;
-					const expected = 2.5;
-					assert.equal(actual, expected);
-				});
-			});
-
-			describe('left of the root, has a right tree with a left node', () => {
-				it('should change the parent’s reference  to the "next biggest"', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2);
-					const actual = tree.remove(0).root.left.value;
-					const expected = 0.2;
-					assert.equal(actual, expected);
-				});
-			});
-
-			describe('right of the root, has a right tree with multiple left nodes', () => {
-				
-				//                       remove(2)
-				//         (1)               =>          (1)         
-				//   (0)          (2)        =>    (0)         (2.2)
-				//(-1) (0.5)  (1.5) (3)      => (-1) (0.5)  (1.5) (3)
-				//                (2.5)      =>                 (2.5)
-				//               (2.2)       =>                      
-
-				it('should change the parent’s reference  to the "next biggest"', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5).insert(2.2);
-					const actual = tree.remove(2).root.right.value;
-					const expected = 2.2;
-					assert.equal(actual, expected);
-				});
-
-				it('should update the swapped nodes .left', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5).insert(2.2);
-					const actual = tree.remove(2).root.right.left.value;
-					const expected = 1.5;
-					assert.equal(actual, expected);
-				});
-
-				it('should update the swapped nodes .right', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5).insert(2.2);
-					const actual = tree.remove(2).root.right.right.value;
-					const expected = 3;
-					assert.equal(actual, expected);
-				});
-
-				it('should update the node that was referencing the swapped node', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(2.5).insert(2.2);
-					const actual = tree.remove(2).root.right.right.left.left;
-					const expected = null;
-					assert.equal(actual, expected);
-				});
-			});
-
-			describe('left of the root, has a right tree with multiple left nodes', () => {
-
-						//                       remove(0)
-						//         (1)               =>          (1)         
-						//   (0)          (2)        =>    (0.1)        (2)
-						//(-1) (0.5)  (1.5) (3)      => (-1) (0.5)  (1.5) (3)
-						//    (0.2)                  =>     (0.2)            
-						//   (0.1)                   =>                      
-
-				it('should change the parent’s reference  to the "next biggest"', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2).insert(0.1);
-					const actual = tree.remove(0).root.left.value;
-					const expected = 0.1;
-					assert.equal(actual, expected);
-				});
-
-				it('should update the swapped nodes .left', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2).insert(0.1);
-					const actual = tree.remove(0).root.left.left.value;
-					const expected = -1;
-					assert.equal(actual, expected);
-				});
-
-				it('should update the swapped nodes .right', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2).insert(0.1);
-					const actual = tree.remove(0).root.left.right.value;
-					const expected = 0.5;
-					assert.equal(actual, expected);
-				});
-
-				it('should update the node that was referencing the swapped node', () => {
-					const tree = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).insert(0.2).insert(0.1);
-					const actual = tree.remove(0).root.left.right.left.left;
-					const expected = null;
-					assert.equal(actual, expected);
-				});
-			});
-		});
-
-		describe.only('.contains() a value that doesnt exist', () => {
-			it('should return false', () => {
-				const actual = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).contains(42);
-				const expected = false;
-				assert.equal(actual, expected);
 			});
 		});
 
