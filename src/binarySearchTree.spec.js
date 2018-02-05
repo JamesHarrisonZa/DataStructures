@@ -481,7 +481,7 @@ describe('A BinarySearchTree', () => {
 			});
 
 			describe('a value that does exist', () => {
-				xit('should return true', () => {
+				it('should return true', () => {
 					const actual = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).contains(3);
 					const expected = true;
 					assert.equal(actual, expected);

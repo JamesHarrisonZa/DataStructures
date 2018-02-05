@@ -50,17 +50,17 @@ class BinarySearchTree {
 
 		if (!this.root)
 			return this;
-		else if (value === this.root.value)
+		if (value === this.root.value)
 			this.root = null;
-		else if (!currentNode)
+		if (!currentNode)
 			return this.remove(value, this.root);
 
-		else if (isSearchNode(currentNode.left, value))
+		if (isSearchNode(currentNode.left, value))
 			performRemove(this, currentNode, true);
-		else if (isSearchNode(currentNode.right, value))
+		if (isSearchNode(currentNode.right, value))
 			performRemove(this, currentNode);
 
-		else if (value > currentNode.value) {
+		if (value > currentNode.value) {
 			if (currentNode.right)
 				return this.remove(value, currentNode.right);
 			//Otherwise doesnt exist
@@ -84,14 +84,30 @@ class BinarySearchTree {
 		if (this.root.value === value) 
 			return true;
 
-		if (isSearchNode(this.root.right, value)) 
-			return true;
-		if (isSearchNode(this.root.left, value)) 
+		if (containsRecursive(value, this.root))
 			return true;
 
 		return false;
 	}
 }
+
+const containsRecursive = (value, currentNode) => {
+	if (isSearchNode(currentNode.right, value))
+		return true;
+	if (isSearchNode(currentNode.left, value))
+		return true;
+	
+	if (value > currentNode.value) {
+		if (currentNode.right)
+			return containsRecursive(value, currentNode.right);
+		//Otherwise doesnt exist
+	}
+	else if (value < currentNode.value) {
+		if (currentNode.left)
+			return containsRecursive(value, currentNode.left);
+		//Otherwise doesnt exist
+	}
+};
 
 const performInsert = (tree, value, parentNode, left) => {
 
