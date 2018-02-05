@@ -56,6 +56,16 @@ describe('A BinarySearchTree', () => {
 							});
 						});
 
+						describe('.contains()', () => {
+							describe('that larger value', () => {
+								it('should return true', () => {
+									const actual = new BinarySearchTree(1, 2).contains(2);
+									const expected = true;
+									assert.equal(actual, expected);
+								});
+							});
+						});
+
 						describe('.remove()', () => {
 							describe('with the larger value', () => {
 
@@ -86,6 +96,16 @@ describe('A BinarySearchTree', () => {
 								const actual = new BinarySearchTree(1, 0).root.left.value;
 								const expected = 0;
 								assert.equal(actual, expected);
+							});
+						});
+
+						describe('.contains()', () => {
+							describe('that smaller value', () => {
+								it('should return true', () => {
+									const actual = new BinarySearchTree(1, 0).contains(0);
+									const expected = true;
+									assert.equal(actual, expected);
+								});
 							});
 						});
 

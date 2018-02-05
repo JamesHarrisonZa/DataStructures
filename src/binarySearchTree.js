@@ -55,9 +55,9 @@ class BinarySearchTree {
 		else if (!currentNode)
 			return this.remove(value, this.root);
 
-		else if (isNodeToRemove(currentNode.left, value))
+		else if (isSearchNode(currentNode.left, value))
 			performRemove(this, currentNode, true);
-		else if (isNodeToRemove(currentNode.right, value))
+		else if (isSearchNode(currentNode.right, value))
 			performRemove(this, currentNode);
 
 		else if (value > currentNode.value) {
@@ -79,8 +79,15 @@ class BinarySearchTree {
 	 */
 	contains(value) {
 
-		if (!this.root) return false;
-		if (this.root.value === value) return true;
+		if (!this.root) 
+			return false;
+		if (this.root.value === value) 
+			return true;
+
+		if (isSearchNode(this.root.right, value)) 
+			return true;
+		if (isSearchNode(this.root.left, value)) 
+			return true;
 
 		return false;
 	}
@@ -96,7 +103,7 @@ const performInsert = (tree, value, parentNode, left) => {
 	tree.count++;
 };
 
-const isNodeToRemove = (node, value) => node && value === node.value;
+const isSearchNode = (node, value) => node && node.value === value;
 
 const hasNoChildren = (node) => !(node.left || node.right);
 
