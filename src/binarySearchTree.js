@@ -36,8 +36,7 @@ class BinarySearchTree {
 		if (!this.root)
 			return this;
 		if (value === this.root.value){
-			this.root = null;
-			this.count--;
+			performRemove(this, null, this.root);
 		}	
 		else
 			removeRecursive(this, this.root, value);
@@ -85,9 +84,9 @@ const insertRecursive = (tree, parentNode, value) => {
 const removeRecursive = (tree, parentNode, value) => {
 
 	if (isSearchNode(parentNode.left, value))
-		performRemove(tree, parentNode, true);
+		performRemove(tree, parentNode, parentNode.left, true);
 	if (isSearchNode(parentNode.right, value))
-		performRemove(tree, parentNode);
+		performRemove(tree, parentNode, parentNode.right);
 
 	if (value > parentNode.value) {
 		if (parentNode.right)
@@ -135,14 +134,16 @@ const hasNoChildren = (node) => !(node.left || node.right);
 
 const hasOneChild = (node) => (node.left && !node.right) || (!node.left && node.right);
 
-const performRemove = (tree, parentNode, leftOfParent) => {
-
-	const nodeToRemove = (leftOfParent) ? parentNode.left : parentNode.right;
+const performRemove = (tree, parentNode, nodeToRemove, leftOfParent) => {
 
 	if (hasNoChildren(nodeToRemove)) {
-		(leftOfParent)
-			? parentNode.left = null
-			: parentNode.right = null;
+		if (!parentNode) {
+			tree.root = null;
+		}
+		else
+			(leftOfParent)
+				? parentNode.left = null
+				: parentNode.right = null;
 	}
 	else if (hasOneChild(nodeToRemove)) {
 		if (!nodeToRemove.right)
@@ -161,9 +162,13 @@ const performRemove = (tree, parentNode, leftOfParent) => {
 				: parentNode.right = parentNode.right.right;
 		else {
 			const leftMostNode = getNextBiggest(nodeToRemove);
-			(leftOfParent)
-				? parentNode.left = leftMostNode
-				: parentNode.right = leftMostNode;
+			if (!parentNode) {
+				tree.root = leftMostNode;
+			}
+			else
+				(leftOfParent)
+					? parentNode.left = leftMostNode
+					: parentNode.right = leftMostNode;
 		}
 	}
 	tree.count--;

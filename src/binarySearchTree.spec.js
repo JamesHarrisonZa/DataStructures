@@ -4,7 +4,7 @@ const BinarySearchTree = require('./binarySearchTree');
 const TreeNode = require('./treeNode');
 const assert = require('assert');
 
-describe('A BinarySearchTree', () => {
+describe.only('A BinarySearchTree', () => {
 
 	describe('with no items', () => {
 
@@ -470,7 +470,7 @@ describe('A BinarySearchTree', () => {
 				});
 			});
 
-			xdescribe('a value at the root of the tree', () => {
+			describe('a value at the root of the tree', () => {
 				describe('.root', () => {
 					describe('.value', () => {
 						it('should be the new root', () => {
