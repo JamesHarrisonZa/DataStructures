@@ -134,49 +134,33 @@ const hasNoChildren = (node) => !(node.left || node.right);
 
 const hasOneChild = (node) => (node.left && !node.right) || (!node.left && node.right);
 
+const updateReference = (tree, parentNode, leftOfParent, value) => {
+
+	if (!parentNode) 
+		tree.root = value;
+	else
+		(leftOfParent)
+			? parentNode.left = value
+			: parentNode.right = value;
+};
+
 const performRemove = (tree, parentNode, nodeToRemove, leftOfParent) => {
 
 	if (hasNoChildren(nodeToRemove)) {
-		if (!parentNode) {
-			tree.root = null;
-		}
-		else
-			(leftOfParent)
-				? parentNode.left = null
-				: parentNode.right = null;
+		updateReference(tree, parentNode, leftOfParent, null);
 	}
 	else if (hasOneChild(nodeToRemove)) {
 		if (!nodeToRemove.right)
-			if (!parentNode)
-				tree.root = nodeToRemove.left;
-			else
-				(leftOfParent)
-					? parentNode.left = parentNode.left.left
-					: parentNode.right = parentNode.right.left;
+			updateReference(tree, parentNode, leftOfParent, nodeToRemove.left);
 		else
-			if (!parentNode)
-				tree.root = nodeToRemove.right;
-			else
-				(leftOfParent)
-					? parentNode.left = parentNode.left.right
-					: parentNode.right = parentNode.right.right;
+			updateReference(tree, parentNode, leftOfParent, nodeToRemove.right);
 	}
 	else { //hasTwoChildren
 		if (!hasRightTreeWithLeftNodes(nodeToRemove))
-			if (!parentNode)
-				tree.root = nodeToRemove.right;
-			else
-				(leftOfParent)
-					? parentNode.left = parentNode.left.right
-					: parentNode.right = parentNode.right.right;
+			updateReference(tree, parentNode, leftOfParent, nodeToRemove.right);
 		else {
 			const leftMostNode = getNextBiggest(nodeToRemove);
-			if (!parentNode) 
-				tree.root = leftMostNode;
-			else
-				(leftOfParent)
-					? parentNode.left = leftMostNode
-					: parentNode.right = leftMostNode;
+			updateReference(tree, parentNode, leftOfParent, leftMostNode);
 		}
 	}
 	tree.count--;
