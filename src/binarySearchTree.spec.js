@@ -4,7 +4,7 @@ const BinarySearchTree = require('./binarySearchTree');
 const TreeNode = require('./treeNode');
 const assert = require('assert');
 
-describe.only('A BinarySearchTree', () => {
+describe('A BinarySearchTree', () => {
 
 	describe('with no items', () => {
 
@@ -85,6 +85,22 @@ describe.only('A BinarySearchTree', () => {
 								});
 							});
 						});
+
+						describe('.insert()', () => {
+							describe('a smaller value', () => {
+								describe('.remove', () => {
+									describe('the root value', () => {
+										describe('.root.value', () => {
+											it('should be the "next biggest, ie the right child of the old root"', () => {
+												const actual = new BinarySearchTree(1, 2, 0).remove(1).root.value;;
+												const expected = 2;
+												assert.equal(actual, expected);
+											});
+										});
+									});
+								});
+							});
+						});
 					});
 				});
 
@@ -110,8 +126,8 @@ describe.only('A BinarySearchTree', () => {
 						});
 
 						describe('.remove()', () => {
-							describe('with the smaller value', () => {
-							
+
+							describe('the smaller value', () => {
 								describe('.root.left', () => {
 									it('should be null', () => {
 										const actual = new BinarySearchTree(1, 0).remove(0).root.left;
@@ -123,6 +139,16 @@ describe.only('A BinarySearchTree', () => {
 									it('should be one less', () => {
 										const actual = new BinarySearchTree(1, 0).remove(0).count;
 										const expected = 1;
+										assert.equal(actual, expected);
+									});
+								});
+							});
+
+							describe('the root value', () => {
+								describe('.root.value', () => {
+									it('should be the left child of the old root', () => {
+										const actual = new BinarySearchTree(1, 0).remove(1).root.value;
+										const expected = 0;
 										assert.equal(actual, expected);
 									});
 								});
