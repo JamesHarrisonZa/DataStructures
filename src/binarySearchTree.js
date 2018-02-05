@@ -78,6 +78,10 @@ class BinarySearchTree {
 	 * @return {boolean}
 	 */
 	contains(value) {
+
+		if (!this.root) return false;
+		if (this.root.value === value) return true;
+
 		return false;
 	}
 }

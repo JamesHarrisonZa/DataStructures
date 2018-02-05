@@ -35,6 +35,16 @@ describe('A BinarySearchTree', () => {
 					});
 				});
 
+				describe('.contains()', () => {
+					describe('that value', () => {
+						it('should return true', () => {
+							const actual = new BinarySearchTree().insert(1).contains(1);
+							const expected = true;
+							assert.equal(actual, expected);
+						});
+					});
+				});
+
 				describe('.insert()', () => {
 					describe('a larger value', () => {
 					
