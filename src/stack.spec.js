@@ -15,6 +15,18 @@ describe('A Stack', () => {
 				assert.equal(actual, expected);
 			});
 		});
+
+		describe('.push()', () => {
+		
+			describe('.count', () => {
+				it('should increase by one', () => {
+					const actual = new Stack().push(1).count;
+					const expected = 1;
+					assert.equal(actual, expected);
+				});
+			});
+			
+		});
 	});
 
 	describe('with multiple items', () => {

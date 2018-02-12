@@ -8,12 +8,13 @@ class Stack extends DoublyLinkedList {
 	}
 
 	push(value) {
-		this._linkedList.addLast(value);
+		this.addLast(value);
+		return this;
 	}
 
 	pop() {
-		const node = this._linkedList.getFirst();
-		this._linkedList.removeFirst();
+		const node = this.getFirst();
+		this.removeFirst();
 		return node;
 	}
 }
