@@ -78,6 +78,14 @@ class BinarySearchTree {
 
 		return traverseInorderRecursive(this.root, []);
 	}
+
+	/**
+	 * @return {Array<number>}
+	 */
+	toArrayPreorder() {
+
+		return traversePreorderRecursive(this.root, []);
+	}
 }
 
 const insertRecursive = (tree, parentNode, value) => {
@@ -214,14 +222,22 @@ const searchRecursive = (currentNode, value) => {
 
 const traverseInorderRecursive = (currentNode, array) => {
 
-	if (!currentNode)
-		return array;
+	if (!currentNode) return array;
 
 	traverseInorderRecursive(currentNode.left, array);
 	array.push(currentNode.value);
 	traverseInorderRecursive(currentNode.right, array);
 	return array;
+};
 
+const traversePreorderRecursive = (currentNode, array) => {
+
+	if (!currentNode) return array;
+
+	array.push(currentNode.value);
+	traversePreorderRecursive(currentNode.left, array);
+	traversePreorderRecursive(currentNode.right, array);
+	return array;
 };
 
 module.exports = BinarySearchTree;
