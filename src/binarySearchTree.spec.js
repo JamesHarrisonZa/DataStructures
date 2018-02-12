@@ -544,7 +544,7 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		describe.only('.getNode()', () => {
+		describe('.getNode()', () => {
 
 			describe('a value that doesnt exist', () => {
 				it('should return null', () => {
