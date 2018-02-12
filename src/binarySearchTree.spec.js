@@ -190,6 +190,25 @@ describe('A BinarySearchTree', () => {
 				});
 			});
 		});
+
+		describe('.getNode()', () => {
+			describe('any value', () => {
+				it('should return null', () => {
+					const actual = new BinarySearchTree().getNode(42);
+					const expected = null;
+					assert.deepStrictEqual(actual, expected);
+				});
+			});
+		});
+
+		describe('.toArray()', () => {
+
+			it('should return an empty array', () => {
+				const actual = new BinarySearchTree().toArray();
+				const expected = [];
+				assert.deepEqual(actual, expected);
+			});
+		});
 	});
 
 	describe('with a mixture of items that should spread accross three levels', () => {
@@ -604,10 +623,5 @@ describe('A BinarySearchTree', () => {
 				});
 			});
 		});
-
-		//toArray
-		//traverse inOrder
-
-		//prettyPrint?
 	});
 });

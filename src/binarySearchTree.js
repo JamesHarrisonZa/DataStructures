@@ -70,6 +70,14 @@ class BinarySearchTree {
 
 		return searchRecursive(this.root, value);
 	}
+
+	/**
+	 * @return {Array<number>}
+	 */
+	toArray() {
+
+		return [];
+	}
 }
 
 const insertRecursive = (tree, parentNode, value) => {
