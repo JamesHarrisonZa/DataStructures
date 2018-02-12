@@ -98,7 +98,7 @@ const removeRecursive = (tree, parentNode, value) => {
 
 	if (value > parentNode.value) {
 		if (parentNode.right)
-			return removeRecursive(tree, parentNode.right, value, );
+			return removeRecursive(tree, parentNode.right, value);
 		//Otherwise doesnt exist
 	}
 	else if (value < parentNode.value) {
