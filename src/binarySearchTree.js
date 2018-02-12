@@ -68,7 +68,7 @@ class BinarySearchTree {
 	 */
 	getNode(value) {
 
-		return null;
+		return searchRecursive(this.root, value);
 	}
 }
 
@@ -188,6 +188,19 @@ const containsRecursive = (currentNode, value) => {
 			return containsRecursive(currentNode.left, value);
 		//Otherwise doesnt exist
 	}
+};
+
+const searchRecursive = (currentNode, value) => {
+
+	if (!currentNode)
+		return null;
+	if (value < currentNode.value) 
+		return searchRecursive(currentNode.left, value);
+	if (value > currentNode.value)
+		return searchRecursive(currentNode.right, value);
+	if (value === currentNode.value)
+		return currentNode;
+	return null;
 };
 
 module.exports = BinarySearchTree;

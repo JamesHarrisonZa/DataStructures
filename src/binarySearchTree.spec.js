@@ -544,7 +544,7 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		xdescribe('.getNode()', () => {
+		describe.only('.getNode()', () => {
 
 			describe('a value that doesnt exist', () => {
 				it('should return null', () => {
@@ -554,11 +554,53 @@ describe('A BinarySearchTree', () => {
 				});
 			});
 
-			describe('a value that does exist', () => {
-				it('should return true', () => {
-					const actual = new BinarySearchTree(1, 0, 2).getNode(2);
-					const expected = true;
-					assert.equal(actual, expected);
+			describe('a value which is a leaf node', () => {
+				
+				describe('.value', () => {
+					it('should match', () => {
+						const actual = new BinarySearchTree(1, 0, 2).getNode(2).value;
+						const expected = 2;
+						assert.equal(actual, expected);
+					});
+				});
+				describe('.left', () => {
+					it('should be null', () => {
+						const actual = new BinarySearchTree(1, 0, 2).getNode(2).left;
+						const expected = null;
+						assert.equal(actual, expected);
+					});
+				});
+				describe('.right', () => {
+					it('should be null', () => {
+						const actual = new BinarySearchTree(1, 0, 2).getNode(2).right;
+						const expected = null;
+						assert.equal(actual, expected);
+					});
+				});
+			});
+
+			describe('a value which is at the root', () => {
+
+				describe('.value', () => {
+					it('should match', () => {
+						const actual = new BinarySearchTree(1, 0, 2).getNode(1).value;
+						const expected = 1;
+						assert.equal(actual, expected);
+					});
+				});
+				describe('.left.value', () => {
+					it('should be null', () => {
+						const actual = new BinarySearchTree(1, 0, 2).getNode(1).left.value;
+						const expected = 0;
+						assert.equal(actual, expected);
+					});
+				});
+				describe('.right.value', () => {
+					it('should be null', () => {
+						const actual = new BinarySearchTree(1, 0, 2).getNode(1).right.value;
+						const expected = 2;
+						assert.equal(actual, expected);
+					});
 				});
 			});
 		});
