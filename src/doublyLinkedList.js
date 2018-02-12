@@ -1,13 +1,15 @@
 'use strict';
 
+const ListNode = require('./listNode');
+
 class DoublyLinkedList {
-	constructor(...nodes) {
+	constructor(...values) {
 		this.count = 0;
 		this._head = null;
 		this._tail = null;
 
-		for (const node of nodes) {
-			this.addLast(node);
+		for (const value of values) {
+			this.addLast(value);
 		}
 	}
 
@@ -31,8 +33,9 @@ class DoublyLinkedList {
 		return (this._tail !== null) ? this._tail : null;
 	}
 
-	addFirst(node) {
+	addFirst(value) {
 		this.count++;
+		const node = new ListNode(value);
 		if (this.count === 1) this._tail = node;
 
 		if (this._head !== null) {
@@ -43,8 +46,9 @@ class DoublyLinkedList {
 		return this;
 	}
 
-	addLast(node) {
+	addLast(value) {
 		this.count++;
+		const node = new ListNode(value);
 		if (this.count === 1) this._head = node;
 		
 		if (this._tail !== null) {
