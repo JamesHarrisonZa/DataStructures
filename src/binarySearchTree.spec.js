@@ -201,10 +201,10 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
-		describe('.toArray()', () => {
+		describe('.toArrayInorder()', () => {
 
 			it('should return an empty array', () => {
-				const actual = new BinarySearchTree().toArray();
+				const actual = new BinarySearchTree().toArrayInorder();
 				const expected = [];
 				assert.deepEqual(actual, expected);
 			});
@@ -621,6 +621,15 @@ describe('A BinarySearchTree', () => {
 						assert.equal(actual, expected);
 					});
 				});
+			});
+		});
+
+		describe('.toArrayInorder()', () => {
+
+			it('should be in order', () => {
+				const actual = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).toArrayInorder();
+				const expected = [-1, 0, 0.5, 1, 1.5, 2, 3];
+				assert.deepEqual(actual, expected);
 			});
 		});
 	});

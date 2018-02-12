@@ -74,9 +74,9 @@ class BinarySearchTree {
 	/**
 	 * @return {Array<number>}
 	 */
-	toArray() {
+	toArrayInorder() {
 
-		return [];
+		return traverseInorderRecursive(this.root, []);
 	}
 }
 
@@ -210,6 +210,18 @@ const searchRecursive = (currentNode, value) => {
 
 	if (isSearchNode(currentNode, value))
 		return currentNode;
+};
+
+const traverseInorderRecursive = (currentNode, array) => {
+
+	if (!currentNode)
+		return array;
+
+	traverseInorderRecursive(currentNode.left, array);
+	array.push(currentNode.value);
+	traverseInorderRecursive(currentNode.right, array);
+	return array;
+
 };
 
 module.exports = BinarySearchTree;
