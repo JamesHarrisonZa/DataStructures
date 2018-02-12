@@ -22,7 +22,10 @@ class BinarySearchTree {
 	 */
 	insert(value) {
 
-		insertRecursive(this, this.root, value);
+		if (!this.root)
+			performInsert(this, null, value);
+		else 
+			insertRecursive(this, this.root, value);
 		return this;
 	}
 
@@ -58,14 +61,20 @@ class BinarySearchTree {
 
 		return false;
 	}
+
+	/**
+	 * @param {number} value 
+	 * @return {TreeNode}
+	 */
+	getNode(value) {
+
+		return null;
+	}
 }
 
 const insertRecursive = (tree, parentNode, value) => {
 
-	if (!tree.root)
-		performInsert(tree, null, value);
-
-	else if (value > parentNode.value) {
+	if (value > parentNode.value) {
 		if (!parentNode.right)
 			performInsert(tree, parentNode, value);
 		else

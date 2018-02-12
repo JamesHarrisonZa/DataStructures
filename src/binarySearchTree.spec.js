@@ -544,6 +544,25 @@ describe('A BinarySearchTree', () => {
 			});
 		});
 
+		xdescribe('.getNode()', () => {
+
+			describe('a value that doesnt exist', () => {
+				it('should return null', () => {
+					const actual = new BinarySearchTree(1, 0, 2).getNode(42);
+					const expected = null;
+					assert.equal(actual, expected);
+				});
+			});
+
+			describe('a value that does exist', () => {
+				it('should return true', () => {
+					const actual = new BinarySearchTree(1, 0, 2).getNode(2);
+					const expected = true;
+					assert.equal(actual, expected);
+				});
+			});
+		});
+
 		//toArray
 		//traverse inOrder
 
