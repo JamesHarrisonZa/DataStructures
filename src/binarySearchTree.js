@@ -202,13 +202,14 @@ const searchRecursive = (currentNode, value) => {
 
 	if (!currentNode)
 		return null;
+
 	if (value < currentNode.value) 
 		return searchRecursive(currentNode.left, value);
 	if (value > currentNode.value)
 		return searchRecursive(currentNode.right, value);
-	if (value === currentNode.value)
+
+	if (isSearchNode(currentNode, value))
 		return currentNode;
-	return null;
 };
 
 module.exports = BinarySearchTree;
