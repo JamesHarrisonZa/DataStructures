@@ -218,6 +218,15 @@ describe('A BinarySearchTree', () => {
 				assert.deepEqual(actual, expected);
 			});
 		});
+
+		describe('.toArrayPostorder()', () => {
+
+			it('should return an empty array', () => {
+				const actual = new BinarySearchTree().toArrayPostorder();
+				const expected = [];
+				assert.deepEqual(actual, expected);
+			});
+		});
 	});
 
 	describe('with a mixture of items that should spread accross three levels', () => {
@@ -647,6 +656,15 @@ describe('A BinarySearchTree', () => {
 			it('should be in preorder', () => {
 				const actual = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).toArrayPreorder();
 				const expected = [1, 0, -1, 0.5, 2, 1.5, 3];
+				assert.deepEqual(actual, expected);
+			});
+		});
+
+		describe('.toArrayPostorder()', () => {
+
+			it('should be in postorder', () => {
+				const actual = new BinarySearchTree(1, 0, 2, -1, 0.5, 3, 1.5).toArrayPostorder();
+				const expected = [-1, 0.5, 0, 1.5, 3, 2, 1];
 				assert.deepEqual(actual, expected);
 			});
 		});
