@@ -55,5 +55,38 @@ describe('A Stack', () => {
 				assert.equal(actual, expected);
 			});
 		});
+
+		describe('iterating over the Stack', () => {
+
+			it('should pop all the items off the stack', () => {
+				const stack = new Stack('A', 'B', 'C');
+				[...stack]
+				const actual = stack.count;
+				const expected = 0;
+				assert.equal(actual, expected);
+			});
+
+			describe('for of', () => {
+				it('should loop for every node', () => {
+					const stack = new Stack('A', 'B', 'C');
+					let loopCount = 0;
+					for (const node of stack) {
+						loopCount++;
+					}
+					const actual = loopCount;
+					const expected = 3;
+					assert.equal(actual, expected);
+				});
+			});
+
+			describe('destructuring', () => {
+				it('should create an array of the same length', () => {
+					const stack = new Stack('A', 'B', 'C');
+					const actual = [...stack].length;
+					const expected = 3;
+					assert.equal(actual, expected);
+				});
+			});
+		});
 	});
 });

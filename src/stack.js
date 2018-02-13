@@ -7,6 +7,17 @@ class Stack extends DoublyLinkedList {
 		super(...values);
 	}
 
+	[Symbol.iterator]() {
+		let stack = this;
+		return {
+			next() {
+				const currentNode = stack.pop();
+				const done = !currentNode;
+				return { currentNode, done };
+			}
+		}
+	}
+
 	push(value) {
 		this.addLast(value);
 		return this;
@@ -17,6 +28,8 @@ class Stack extends DoublyLinkedList {
 		this.removeFirst();
 		return node;
 	}
+
+	//peek
 }
 
 module.exports = Stack;
