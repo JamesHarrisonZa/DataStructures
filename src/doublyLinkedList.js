@@ -61,7 +61,9 @@ class DoublyLinkedList {
 
 	removeFirst() {
 		if (this.count !== 0) this.count--;
-		if (this._head) {
+		if (!(this._head && this._head.next))
+			this._head = null;
+		else if (this._head) {
 			this._head = this._head.next;
 			this._head.previous = null;
 		}

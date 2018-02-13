@@ -25,7 +25,23 @@ describe('A Stack', () => {
 					assert.equal(actual, expected);
 				});
 			});
-			
+
+			describe('.pop()', () => {
+				it('should return a value', () => {
+					const actual = new Stack().push(1).pop().value;
+					const expected = 1;
+					assert.equal(actual, expected);
+				});
+			});
+		});
+
+		describe('.pop()', () => {
+
+			it('should return null', () => {
+				const actual = new Stack().pop();
+				const expected = null;
+				assert.equal(actual, expected);
+			});
 		});
 	});
 
