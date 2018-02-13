@@ -56,7 +56,6 @@ describe('A Stack', () => {
 	describe('with multiple items', () => {
 
 		describe('.count', () => {
-
 			it('should match the number of items', () => {
 				const actual = new Stack(1, 2, 3).count;
 				const expected = 3;
@@ -65,6 +64,7 @@ describe('A Stack', () => {
 		});
 
 		describe('.peek()', () => {
+			
 			it('should return the first item', () => {
 				const actual = new Stack(1, 2, 3).peek().value;
 				const expected = 1;
