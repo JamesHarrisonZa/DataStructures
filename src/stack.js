@@ -29,7 +29,9 @@ class Stack extends DoublyLinkedList {
 		return node;
 	}
 
-	//peek
+	peek() {
+		return this.getFirst();
+	}
 }
 
 module.exports = Stack;

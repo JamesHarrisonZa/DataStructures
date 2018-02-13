@@ -43,6 +43,14 @@ describe('A Stack', () => {
 				assert.equal(actual, expected);
 			});
 		});
+
+		describe('.peek()', () => {
+			it('should return null', () => {
+				const actual = new Stack().peek();
+				const expected = null;
+				assert.equal(actual, expected);
+			});
+		});
 	});
 
 	describe('with multiple items', () => {
@@ -51,6 +59,22 @@ describe('A Stack', () => {
 
 			it('should match the number of items', () => {
 				const actual = new Stack(1, 2, 3).count;
+				const expected = 3;
+				assert.equal(actual, expected);
+			});
+		});
+
+		describe('.peek()', () => {
+			it('should return the first item', () => {
+				const actual = new Stack(1, 2, 3).peek().value;
+				const expected = 1;
+				assert.equal(actual, expected);
+			});
+
+			it('should have the same count', () => {
+				const stack = new Stack(1, 2, 3);
+				stack.peek();
+				const actual = stack.count;
 				const expected = 3;
 				assert.equal(actual, expected);
 			});
