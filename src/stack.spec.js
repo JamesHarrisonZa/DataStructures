@@ -5,7 +5,7 @@ const assert = require('assert');
 
 describe('A Stack', () => {
 
-	describe('with no items', () => {
+	describe('constructed with no items', () => {
 		
 		describe('.count', () => {
 			
@@ -53,7 +53,7 @@ describe('A Stack', () => {
 		});
 	});
 
-	describe('with multiple items', () => {
+	describe('constructed with multiple items', () => {
 
 		describe('.count', () => {
 			it('should match the number of items', () => {

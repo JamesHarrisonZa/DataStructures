@@ -6,7 +6,7 @@ const assert = require('assert');
 
 describe('A DoublyLinkedList', () => {
 
-	describe('with no items', () => {
+	describe('constructed with no items', () => {
 
 		describe('.count', () => {
 
@@ -125,7 +125,7 @@ describe('A DoublyLinkedList', () => {
 		});
 	});
 
-	describe('with multiple items', () => {
+	describe('constructed with multiple items', () => {
 
 		describe('.count', () => {
 			it('should have count of three', () => {
