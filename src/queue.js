@@ -10,6 +10,12 @@ class Queue extends DoublyLinkedList {
 	enqueue(value) {
 		return this.addLast(value);
 	}
+
+	dequeue() {
+		const first = this.getFirst();
+		this.removeFirst();
+		return first;
+	}
 }
 
 module.exports = Queue;
