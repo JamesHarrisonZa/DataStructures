@@ -3,8 +3,8 @@
 const DoublyLinkedList = require('./doublyLinkedList');
 
 class Queue extends DoublyLinkedList {
-	constructor() {
-		super();
+	constructor(...values) {
+		super(...values);
 	}
 
 	enqueue(value) {

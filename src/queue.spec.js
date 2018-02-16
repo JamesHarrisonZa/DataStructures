@@ -5,7 +5,7 @@ const assert = require('assert');
 
 describe('A Queue', () => {
 
-	describe('with no items', () => {
+	describe('constructed with no items', () => {
 		
 		describe('.count', () => {
 			
@@ -58,6 +58,25 @@ describe('A Queue', () => {
 				const first = queue.dequeue();
 				const actual = queue.count;
 				const expected = 0;
+				assert.equal(actual, expected);
+			});
+		});
+	});
+
+	describe('constructed with multiple items', () => {
+	
+		describe('.count', () => {
+			it('should match the number of items', () => {
+				const actual = new Queue('A', 'B', 'C').count;
+				const expected = 3;
+				assert.equal(actual, expected);
+			});
+		});
+
+		describe('.dequeue()', () => {
+			it('should return the first item', () => {
+				const actual = new Queue('A', 'B', 'C').dequeue().value;
+				const expected = 'A';
 				assert.equal(actual, expected);
 			});
 		});
