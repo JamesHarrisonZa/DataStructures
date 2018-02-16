@@ -7,6 +7,17 @@ class Queue extends DoublyLinkedList {
 		super(...values);
 	}
 
+	[Symbol.iterator]() {
+		let queue = this;
+		return {
+			next() {
+				const currentNode = queue.dequeue();
+				const done = !currentNode;
+				return { currentNode, done };
+			}
+		}
+	}
+
 	enqueue(value) {
 		return this.addLast(value);
 	}
