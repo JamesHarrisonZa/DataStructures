@@ -2,9 +2,10 @@
 
 const DoublyLinkedList = require('./doublyLinkedList');
 
-class Queue extends DoublyLinkedList {
+class Queue {
 	constructor(...values) {
-		super(...values);
+		this._linkedList = new DoublyLinkedList(...values);
+		this.count = this._linkedList.count;
 	}
 
 	[Symbol.iterator]() {
@@ -13,18 +14,22 @@ class Queue extends DoublyLinkedList {
 			next() {
 				const currentNode = queue.dequeue();
 				const done = !currentNode;
+				queue.count = queue._linkedList.count;
 				return { currentNode, done };
 			}
 		}
 	}
 
 	enqueue(value) {
-		return this.addLast(value);
+		this._linkedList.addLast(value);
+		this.count = this._linkedList.count;
+		return this;
 	}
 
 	dequeue() {
-		const first = this.getFirst();
-		this.removeFirst();
+		const first = this._linkedList.getFirst();
+		this._linkedList.removeFirst();
+		this.count = this._linkedList.count;
 		return first;
 	}
 }
