@@ -5,7 +5,7 @@ const DoublyLinkedList = require('./doublyLinkedList');
 class Stack {
 	constructor(...values) {
 		this._linkedList = new DoublyLinkedList(...values);
-		updateCount(this, this._linkedList);
+		this.count = this._linkedList.count;
 	}
 
 	[Symbol.iterator]() {
@@ -13,8 +13,9 @@ class Stack {
 		return {
 			next() {
 				const currentNode = stack.pop();
+
 				const done = !currentNode;
-				updateCount(stack, stack._linkedList);
+				stack.count = stack._linkedList.count;
 				return { currentNode, done };
 			}
 		}
@@ -22,14 +23,14 @@ class Stack {
 
 	push(value) {
 		this._linkedList.addLast(value);
-		updateCount(this, this._linkedList);
+		this.count = this._linkedList.count;
 		return this;
 	}
 
 	pop() {
 		const node = this._linkedList.getFirst();
 		this._linkedList.removeFirst();
-		updateCount(this, this._linkedList);
+		this.count = this._linkedList.count;
 		return node;
 	}
 
@@ -37,7 +38,5 @@ class Stack {
 		return this._linkedList.getFirst();
 	}
 }
-
-const updateCount = (stack, linkedList) => stack.count = linkedList.count;
 
 module.exports = Stack;
