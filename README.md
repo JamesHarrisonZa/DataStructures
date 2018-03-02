@@ -3,8 +3,13 @@
 Currently very WIP  
 My JavaScript implementation of various data structures. To reinforce my understanding of these fundamentals.  
 
-* LinkedList
-* BinaryTree
+## Done
+* DoublyLinkedList
+* Stack
+* Queue
+* BinarySearchTree
+
+## ToDo
 * Heap
 * Trie
 * Graph
