@@ -1,0 +1,4 @@
+
+* Add AddBefore(node) and AddAfter(node) functions to my LinkedList and a GetNode(value)
+
+* Change Stack to use underlying array
